@@ -20,7 +20,6 @@ import javax.validation.constraints.Pattern;
 @ApiModel(description = "The person who we are checking eligibility for")
 public class PersonDTO {
 
-    //TODO MS 2019-03-22: Add unit tests for the validation.
     @NotNull
     @JsonProperty("forename")
     @ApiModelProperty(notes = "The person's forename", example = "Lisa")
