@@ -53,7 +53,8 @@ class HMRCEligibilityControllerIntegrationTest {
         verify(eligibilityService).checkEligibility(eligibilityRequest);
     }
 
-    //TODO MS 2019-03-25: Change these test so that only one test checks for a bad request and then move all the other permutations into a unit test for the model objects.
+    //TODO MS 2019-03-25: Change these test so that only one test checks for a bad request and
+    // then move all the other permutations into a unit test for the model objects.
     @Test
     void shouldReturnBadRequestForMissingNino() {
         PersonDTO person = aPersonWithNoNino();
