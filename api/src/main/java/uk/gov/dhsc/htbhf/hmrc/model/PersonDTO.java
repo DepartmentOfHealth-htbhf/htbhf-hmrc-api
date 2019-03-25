@@ -21,7 +21,6 @@ import javax.validation.constraints.Pattern;
 public class PersonDTO {
 
     //TODO MS 2019-03-22: Add unit tests for the validation.
-    // Do we want to have a common-test module for the swagger generation and ConstraintValidation assertions?
     @NotNull
     @JsonProperty("forename")
     @ApiModelProperty(notes = "The person's forename", example = "Lisa")

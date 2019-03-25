@@ -11,7 +11,7 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "localhost:50598"
+host: "localhost:53699"
 basePath: "/"
 tags:
 - name: "hmrc-eligibility-controller"
@@ -73,6 +73,10 @@ definitions:
   EligibilityRequest:
     type: "object"
     properties:
+      ctcAnnualIncomeThreshold:
+        type: "number"
+        example: 11000.0
+        description: "The annual income threshold for Child Tax Credit"
       eligibleEndDate:
         type: "string"
         format: "date"
@@ -86,10 +90,6 @@ definitions:
       person:
         description: "Details of the person"
         $ref: "#/definitions/PersonDTO"
-      ucMonthlyIncomeThreshold:
-        type: "number"
-        example: 11000.0
-        description: "The annual income threshold for Child Tax Credit"
     title: "EligibilityRequest"
     description: "The eligibility request for Child Tax Credit"
   EligibilityResponse:
