@@ -54,10 +54,10 @@ class HMRCEligibilityControllerIntegrationTest {
     void shouldReturnBadRequestForInvalidEligibilityRequest() {
         EligibilityRequest request = buildDefaultRequest().person(aPersonWithNoNino()).build();
 
-        ResponseEntity<ErrorResponse> benefit = restTemplate.postForEntity(ENDPOINT, request, ErrorResponse.class);
+        ResponseEntity<ErrorResponse> errorResponse = restTemplate.postForEntity(ENDPOINT, request, ErrorResponse.class);
 
-        assertThat(benefit.getStatusCode()).isEqualTo(BAD_REQUEST);
-        assertValidationError(benefit, "person.nino", "must not be null");
+        assertThat(errorResponse.getStatusCode()).isEqualTo(BAD_REQUEST);
+        assertValidationError(errorResponse, "person.nino", "must not be null");
     }
 
     private void assertValidationError(ResponseEntity<ErrorResponse> response, String field, String errorMessage) {
