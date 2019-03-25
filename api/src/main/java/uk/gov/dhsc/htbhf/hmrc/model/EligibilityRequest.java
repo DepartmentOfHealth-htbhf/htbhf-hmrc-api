@@ -26,7 +26,7 @@ public class EligibilityRequest {
     private PersonDTO person;
 
     @NotNull
-    @JsonProperty("ucMonthlyIncomeThreshold")
+    @JsonProperty("ctcAnnualIncomeThreshold")
     @ApiModelProperty(notes = "The annual income threshold for Child Tax Credit", example = "11000")
     private final BigDecimal ctcAnnualIncomeThreshold;
 
