@@ -11,17 +11,18 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "localhost:54315"
+host: "localhost:55251"
 basePath: "/"
 tags:
 - name: "hmrc-eligibility-controller"
-  description: "Endpoints for dealing with HMRC Eligibility requests."
+  description: "Endpoints for dealing with HMRC Eligibility requests for Healthy Start."
 paths:
   /v1/hmrc/eligibility:
     post:
       tags:
       - "hmrc-eligibility-controller"
-      summary: "Retrieve the eligibility of a person for Child Tax Credits"
+      summary: "Retrieve the eligibility of a person for Healthy Start based on HMRC's\
+        \ opinion of their income and the fact that they're getting Child Tax Credits"
       operationId: "getBenefitsUsingPOST"
       consumes:
       - "application/json"
@@ -30,13 +31,14 @@ paths:
       parameters:
       - in: "body"
         name: "eligibilityRequest"
-        description: "The eligibility request for Child Tax Credit"
+        description: "The eligibility request for HMRC for Healthy Start"
         required: false
         schema:
           $ref: "#/definitions/EligibilityRequest"
       responses:
         200:
-          description: "The person's eligibility for Child Tax Credit"
+          description: "The person's eligibility for Healthy Start from HMRC's point\
+            \ of view"
           schema:
             $ref: "#/definitions/EligibilityResponse"
         201:

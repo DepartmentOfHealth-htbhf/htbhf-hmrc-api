@@ -13,3 +13,4 @@ applications:
   services:
     - logit-ssl-drain
     - variable-service
+    - htbhf-eligibility-api-postgres
