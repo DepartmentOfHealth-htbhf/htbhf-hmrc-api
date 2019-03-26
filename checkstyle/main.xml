@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.15">
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/ApiDocumentation.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/HMRCApplication.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/controller/HMRCEligibilityController.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/AddressDTO.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/EligibilityRequest.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/EligibilityResponse.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/EligibilityStatus.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/PersonDTO.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/service/EligibilityService.java">
+</file>
+</checkstyle>
