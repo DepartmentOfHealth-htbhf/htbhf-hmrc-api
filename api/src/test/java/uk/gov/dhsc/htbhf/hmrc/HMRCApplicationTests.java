@@ -28,6 +28,6 @@ public class HMRCApplicationTests {
 
     @Test
     public void swaggerDocumentationRetrieved() throws IOException {
-        SwaggerGenerationUtil.swaggerDocumentationRetrieved(testRestTemplate, port);
+        SwaggerGenerationUtil.assertSwaggerDocumentationRetrieved(testRestTemplate, port);
     }
 }

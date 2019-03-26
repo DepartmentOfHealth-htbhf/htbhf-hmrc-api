@@ -19,8 +19,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.OK;
+import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.buildDefaultRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestFactory.anEligibilityResponse;
@@ -56,18 +56,7 @@ class HMRCEligibilityControllerIntegrationTest {
 
         ResponseEntity<ErrorResponse> errorResponse = restTemplate.postForEntity(ENDPOINT, request, ErrorResponse.class);
 
-        assertThat(errorResponse.getStatusCode()).isEqualTo(BAD_REQUEST);
-        assertValidationError(errorResponse, "person.nino", "must not be null");
-    }
-
-    private void assertValidationError(ResponseEntity<ErrorResponse> response, String field, String errorMessage) {
-        assertThat(response.getBody()).isNotNull();
-        assertThat(response.getBody().getFieldErrors()).hasSize(1);
-        assertThat(response.getBody().getFieldErrors().get(0).getField()).isEqualTo(field);
-        assertThat(response.getBody().getFieldErrors().get(0).getMessage()).isEqualTo(errorMessage);
-        assertThat(response.getBody().getRequestId()).isNotNull();
-        assertThat(response.getBody().getTimestamp()).isNotNull();
-        assertThat(response.getBody().getMessage()).isEqualTo("There were validation issues with the request.");
+        assertValidationErrorInResponse(errorResponse, "person.nino", "must not be null");
     }
 
 }
