@@ -1,0 +1,16 @@
+---
+applications:
+- name: htbhf-hmrc-api((app-suffix))
+  buildpacks:
+  - java_buildpack
+  health-check-type: http
+  health-check-http-endpoint: /actuator/health
+  routes:
+    - route: htbhf-hmrc-api((app-suffix)).apps.internal
+  env:
+    JBP_CONFIG_OPEN_JDK_JRE: '{jre: { version: 11.+ }}'
+    APP_VERSION: ((app-version))
+  services:
+    - logit-ssl-drain
+    - variable-service
+    - htbhf-eligibility-api-postgres

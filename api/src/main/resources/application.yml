@@ -1,0 +1,34 @@
+
+# see http://engineering.pivotal.io/post/spring-boot-injecting-credentials/
+# to understand how spring parses cloud foundry vcap servcies environment variables
+spring:
+  datasource:
+    url: ${vcap.services.htbhf-eligibility-api-postgres.credentials.jdbcuri:jdbc:postgresql://localhost/eligibility_api}
+    username: ${vcap.services.htbhf-eligibility-api-postgres.credentials.username:eligibility_admin}
+    password: ${vcap.services.htbhf-eligibility-api-postgres.credentials.password:eligibility_admin}
+    driver-class-name: org.postgresql.Driver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connectionTimeout: 5000
+  application:
+    name: hmrc/api
+  boot:
+    admin:
+      url: http://localhost:8080
+  jackson:
+    default-property-inclusion: NON_NULL
+  flyway:
+    baseline-on-migrate: true
+    table: hmrc_flyway_schema_history
+logging:
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] [%X{session.id}][%X{request.id}] %-5level %logger{36} - %msg%n"
+  level:
+    ROOT: ${vcap.services.variable-service.credentials.hmrc-api-app-root-loglevel:info}
+    uk.gov.dhsc: ${vcap.services.variable-service.credentials.hmrc-api-app-loglevel:debug}
+
+server:
+  port: 8130
+
+hmrc:
+  base-uri: ${vcap.services.variable-service.credentials.hmrc-api-uri:http://localhost:8120}

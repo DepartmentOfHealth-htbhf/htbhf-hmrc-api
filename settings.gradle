@@ -1,0 +1,6 @@
+rootProject.name = 'htbhf-hmrc-api-parent'
+include "htbhf-hmrc-api", "htbhf-hmrc-api-db", "htbhf-hmrc-api-manifest"
+
+project(":htbhf-hmrc-api").projectDir = file("api")
+project(":htbhf-hmrc-api-db").projectDir = file("db")
+project(":htbhf-hmrc-api-manifest").projectDir = file("manifest")

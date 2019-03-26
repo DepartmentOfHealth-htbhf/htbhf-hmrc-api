@@ -1,0 +1,122 @@
+buildscript {
+
+    apply from: "default-properties.gradle"
+
+    ext {
+        HikariCPVersion = '2.7.8'
+        postgresVersion = '10.5'
+        flywayVersion = '5.2.4'
+        springBootVersion = '2.1.2.RELEASE'
+    }
+
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+plugins {
+    id 'org.shipkit.java' version '2.0.31'
+}
+
+allprojects {
+    apply plugin: 'jacoco'
+    apply plugin: 'idea'
+
+    group = 'uk.gov.dhsc.htbhf'
+
+    repositories {
+        jcenter()
+    }
+
+    jacoco {
+        toolVersion = "0.8.2"
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+
+    sourceCompatibility = 1.11
+    targetCompatibility = 1.11
+
+    test {
+        reports {
+            junitXml.enabled = true
+            html.enabled = true
+        }
+    }
+
+    jacocoTestReport {
+        additionalSourceDirs.from(files(sourceSets.main.allSource.srcDirs))
+        sourceDirectories.from(files(sourceSets.main.allSource.srcDirs))
+        classDirectories.from(files(sourceSets.main.output))
+        reports {
+            html.enabled = true
+            xml.enabled = true
+            csv.enabled = false
+        }
+    }
+    
+    task updateConfig() {
+        'git submodule update --init --recursive --remote'.execute()
+    }
+
+    tasks.check.dependsOn updateConfig
+}
+
+task jacocoReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
+    dependsOn = subprojects.test
+    additionalSourceDirs.from(files(subprojects.sourceSets.main.allSource.srcDirs))
+    sourceDirectories.from(files(subprojects.sourceSets.main.allSource.srcDirs))
+    classDirectories.from(files(subprojects.sourceSets.main.output))
+    executionData.from(files(subprojects.jacocoTestReport.executionData))
+    reports {
+        html.enabled = true
+        xml.enabled = true
+        csv.enabled = false
+    }
+    onlyIf = {
+        true
+    }
+    doFirst {
+        executionData = files(executionData.findAll {
+            it.exists()
+        })
+    }
+}
+
+task testReport(type: TestReport) {
+    destinationDir = file("$buildDir/reports/tests")
+    // Include the results from the `test` task in all subprojects
+    reportOn subprojects*.test
+}
+
+def testCounter = 0
+allprojects {
+    tasks.withType(Test) {
+        afterSuite { testDescriptor, testResult ->
+            testCounter += testResult.testCount
+        }
+    }
+}
+
+task copyApiReports(type: Copy) {
+    from(file('api/build/reports'))
+    into(file('build/reports'))
+    outputs.upToDateWhen { false }
+}
+task copyAdditionalDocumentation(type: Copy) {
+    from(file('src/documentation/gh-pages'))
+    into(file('build/reports'))
+}
+task copySmokeTestReports(type: Copy) {
+    from(file('smoke_tests/build/reports/tests/test'))
+    into(file('build/reports/smoke_tests'))
+}
+
+task copyReports() {
+    dependsOn copyApiReports, copyAdditionalDocumentation, copySmokeTestReports
+}
+
