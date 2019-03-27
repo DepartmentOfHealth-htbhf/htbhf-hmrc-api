@@ -11,6 +11,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import uk.gov.dhsc.htbhf.errorhandler.ErrorResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
+import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 import uk.gov.dhsc.htbhf.hmrc.service.EligibilityService;
 
 import java.net.URI;
@@ -22,9 +23,9 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.http.HttpStatus.OK;
 import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequest;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.buildDefaultRequest;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequestWithPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestFactory.anEligibilityResponse;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonTestFactory.aPersonWithNoNino;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestFactory.aPersonWithNino;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -52,7 +53,8 @@ class HMRCEligibilityControllerIntegrationTest {
 
     @Test
     void shouldReturnBadRequestForInvalidEligibilityRequest() {
-        EligibilityRequest request = buildDefaultRequest().person(aPersonWithNoNino()).build();
+        PersonDTO invalidPerson = aPersonWithNino(null);
+        EligibilityRequest request = anEligibilityRequestWithPerson(invalidPerson);
 
         ResponseEntity<ErrorResponse> errorResponse = restTemplate.postForEntity(ENDPOINT, request, ErrorResponse.class);
 
