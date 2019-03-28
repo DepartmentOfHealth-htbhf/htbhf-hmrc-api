@@ -24,7 +24,7 @@ public class HouseholdFactory {
 
     public static Child aChild(String forename, String surname, int ageInMonths) {
         return Child.builder()
-                .firstForeName(forename)
+                .firstForename(forename)
                 .surname(surname)
                 .dateOfBirth(LocalDate.now().minusMonths(ageInMonths))
                 .build();
@@ -32,7 +32,7 @@ public class HouseholdFactory {
 
     public static Adult anAdult(String forename, String surname, String nino) {
         return Adult.builder()
-                .firstForeName(forename)
+                .firstForename(forename)
                 .surname(surname)
                 .nino(nino)
                 .addressLine1("742 Evergreen Terrace")

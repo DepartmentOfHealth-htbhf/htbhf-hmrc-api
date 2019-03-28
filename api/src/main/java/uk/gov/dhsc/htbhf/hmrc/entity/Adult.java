@@ -41,11 +41,11 @@ public class Adult extends BaseEntity {
 
     @Size(max = 35)
     @Column(name = "first_forename")
-    private String firstForeName;
+    private String firstForename;
 
     @Size(max = 35)
     @Column(name = "second_forename")
-    private String secondForeName;
+    private String secondForename;
 
     @Size(max = 35)
     @Column(name = "initials")
