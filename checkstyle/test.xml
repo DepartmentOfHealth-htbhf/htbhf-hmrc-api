@@ -4,11 +4,15 @@
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/controller/HMRCEligibilityControllerIntegrationTest.java">
 </file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/entity/HouseholdFactory.java">
+</file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/model/AddressDTOTest.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/model/EligibilityRequestTest.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/model/PersonDTOTest.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/repository/HouseholdRepositoryTest.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/service/EligibilityServiceTest.java">
 </file>
