@@ -42,4 +42,16 @@ public class HouseholdFactory {
                 .build();
     }
 
+    public static Adult anAdultWithNino(String nino) {
+        return Adult.builder()
+                .firstForename("Homer")
+                .surname("Simpson")
+                .nino(nino)
+                .addressLine1("742 Evergreen Terrace")
+                .addressLine2("Springfield")
+                .postcode("AA11AA")
+                .awardDate(LocalDate.now())
+                .build();
+    }
+
 }
