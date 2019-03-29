@@ -14,6 +14,8 @@
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/entity/Household.java">
 </file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/factory/EligibilityResponseFactory.java">
+</file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/AddressDTO.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/model/EligibilityRequest.java">
@@ -27,5 +29,7 @@
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/repository/HouseholdRepository.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/service/EligibilityService.java">
+</file>
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/main/java/uk/gov/dhsc/htbhf/hmrc/service/HouseholdVerifier.java">
 </file>
 </checkstyle>
