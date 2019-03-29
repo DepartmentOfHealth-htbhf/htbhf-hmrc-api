@@ -40,13 +40,17 @@ public class EligibilityService {
             return getEligibilityResponse(eligibilityRequest, household.get());
         }
 
-        ResponseEntity<EligibilityResponse> response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);
-        return response.getBody();
+        return getResponseFromHMRC(eligibilityRequest);
     }
 
     private EligibilityResponse getEligibilityResponse(EligibilityRequest eligibilityRequest, Household household) {
         return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())
                 ? createEligibilityResponse(household)
                 : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();
+    }
+
+    private EligibilityResponse getResponseFromHMRC(EligibilityRequest eligibilityRequest) {
+        ResponseEntity<EligibilityResponse> response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);
+        return response.getBody();
     }
 }
