@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import uk.gov.dhsc.htbhf.hmrc.converter.EligibilityRequestToHMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
+import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.service.EligibilityService;
 
 import javax.validation.Valid;
@@ -21,6 +23,7 @@ import javax.validation.Valid;
 public class HMRCEligibilityController {
 
     private final EligibilityService eligibilityService;
+    private final EligibilityRequestToHMRCEligibilityRequest converter;
 
     @PostMapping
     @ApiOperation("Retrieve the eligibility of a person for Healthy Start based on HMRC's opinion of their income "
@@ -32,6 +35,9 @@ public class HMRCEligibilityController {
                                            @ApiParam("The eligibility request for HMRC for Healthy Start")
                                            EligibilityRequest eligibilityRequest) {
         log.debug("Received HMRC eligibility request");
-        return eligibilityService.checkEligibility(eligibilityRequest);
+
+        HMRCEligibilityRequest request = converter.convert(eligibilityRequest);
+
+        return eligibilityService.checkEligibility(request);
     }
 }

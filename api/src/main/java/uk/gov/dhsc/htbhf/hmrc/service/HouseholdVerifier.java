@@ -4,17 +4,17 @@ import org.flywaydb.core.internal.util.StringUtils;
 import org.springframework.stereotype.Service;
 import uk.gov.dhsc.htbhf.hmrc.entity.Adult;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
-import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
+import uk.gov.dhsc.htbhf.hmrc.model.HMRCPersonDTO;
 
 @Service
 public class HouseholdVerifier {
 
-    public Boolean detailsMatch(Household household, PersonDTO person) {
+    public Boolean detailsMatch(Household household, HMRCPersonDTO person) {
         return household.getAdults().stream()
                 .anyMatch(adult -> adultMatchesPerson(adult, person));
     }
 
-    private boolean adultMatchesPerson(Adult adult, PersonDTO person) {
+    private boolean adultMatchesPerson(Adult adult, HMRCPersonDTO person) {
         return areEqual(adult.getSurname(), person.getSurname())
                 && firstSixCharacterMatch(person.getAddress().getAddressLine1(), adult.getAddressLine1())
                 && areEqualIgnoringWhitespace(adult.getPostcode(), person.getAddress().getPostcode());
