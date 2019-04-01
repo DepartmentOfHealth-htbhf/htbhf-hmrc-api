@@ -54,8 +54,8 @@ public class PersonTestFactory {
                 .dateOfBirth(DOB)
                 .nino(NINO)
                 .address(aValidAddress())
-                .forename(FORENAME)
-                .surname(SURNAME);
+                .firstName(FORENAME)
+                .lastName(SURNAME);
     }
 
     private static AddressDTO aValidAddress() {

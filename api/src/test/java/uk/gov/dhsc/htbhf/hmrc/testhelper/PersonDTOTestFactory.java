@@ -18,12 +18,12 @@ public class PersonDTOTestFactory {
         return buildDefaultPerson().nino("AE000000C").build();
     }
 
-    public static PersonDTO aPersonWithForename(String forename) {
-        return buildDefaultPerson().forename(forename).build();
+    public static PersonDTO aPersonWithFirstName(String forename) {
+        return buildDefaultPerson().firstName(forename).build();
     }
 
-    public static PersonDTO aPersonWithSurname(String surname) {
-        return buildDefaultPerson().surname(surname).build();
+    public static PersonDTO aPersonWithLastName(String surname) {
+        return buildDefaultPerson().lastName(surname).build();
     }
 
     public static PersonDTO aPersonWithNino(String nino) {
@@ -43,8 +43,8 @@ public class PersonDTOTestFactory {
                 .dateOfBirth(DOB)
                 .nino(NINO)
                 .address(aValidAddress())
-                .forename(FORENAME)
-                .surname(SURNAME);
+                .firstName(FORENAME)
+                .lastName(SURNAME);
     }
 
 }

@@ -10,8 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
-import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
+import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.util.Optional;
@@ -24,8 +24,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.springframework.http.HttpStatus.OK;
 import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHousehold;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestFactory.anEligibilityResponse;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCEligibilityRequestTestDataFactory.aValidHMRCEligibilityRequest;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -50,7 +50,7 @@ class EligibilityServiceTest {
 
     @Test
     void shouldReturnResponseFromDatabaseIfFound() {
-        EligibilityRequest eligibilityRequest = anEligibilityRequest();
+        HMRCEligibilityRequest eligibilityRequest = aValidHMRCEligibilityRequest();
         Household household = aHousehold();
         given(repository.findHouseholdByAdultWithNino(anyString())).willReturn(Optional.of(household));
         given(householdVerifier.detailsMatch(any(Household.class), any())).willReturn(true);
@@ -68,7 +68,7 @@ class EligibilityServiceTest {
 
     @Test
     void shouldCallHMRCService() {
-        EligibilityRequest eligibilityRequest = anEligibilityRequest();
+        HMRCEligibilityRequest eligibilityRequest = aValidHMRCEligibilityRequest();
         given(repository.findHouseholdByAdultWithNino(anyString())).willReturn(Optional.empty());
         given(restTemplate.postForEntity(anyString(), any(), any()))
                 .willReturn(new ResponseEntity<>(anEligibilityResponse(), OK));

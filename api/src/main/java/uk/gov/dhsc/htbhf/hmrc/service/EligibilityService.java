@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
-import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
+import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.util.Optional;
@@ -34,7 +34,7 @@ public class EligibilityService {
         this.restTemplate = restTemplate;
     }
 
-    public EligibilityResponse checkEligibility(EligibilityRequest eligibilityRequest) {
+    public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
         Optional<Household> household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());
         if (household.isPresent()) {
             return getEligibilityResponse(eligibilityRequest, household.get());
@@ -43,13 +43,13 @@ public class EligibilityService {
         return getResponseFromHMRC(eligibilityRequest);
     }
 
-    private EligibilityResponse getEligibilityResponse(EligibilityRequest eligibilityRequest, Household household) {
+    private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
         return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())
                 ? createEligibilityResponse(household)
                 : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();
     }
 
-    private EligibilityResponse getResponseFromHMRC(EligibilityRequest eligibilityRequest) {
+    private EligibilityResponse getResponseFromHMRC(HMRCEligibilityRequest eligibilityRequest) {
         ResponseEntity<EligibilityResponse> response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);
         return response.getBody();
     }

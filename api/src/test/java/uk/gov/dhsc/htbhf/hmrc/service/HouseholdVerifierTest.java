@@ -6,8 +6,11 @@ import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHouseholdWithNoAdultsOrChildren;
-import static uk.gov.dhsc.htbhf.hmrc.factory.PersonTestFactory.aPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCPersonDTOTestDataFactory.aValidHMRCPerson;
 
+/**
+ * To match a valid address use address data defined in AddressDTOTestDataFactory.
+ */
 public class HouseholdVerifierTest {
 
     private final HouseholdVerifier householdVerifier = new HouseholdVerifier();
@@ -17,12 +20,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("742 Evergreen Terrace")
+                .addressLine1("Flat b")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isTrue();
     }
@@ -32,12 +35,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Smith")
-                .addressLine1("742 Evergreen Terrace")
+                .addressLine1("Flat b")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isFalse();
     }
@@ -47,12 +50,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("Fake Street")
+                .addressLine1("Fake apartment")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isFalse();
     }
@@ -67,7 +70,7 @@ public class HouseholdVerifierTest {
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isFalse();
     }
@@ -77,12 +80,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("742 Ev_DIFFERENT")
+                .addressLine1("Flat b_DIFFERENT")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isTrue();
     }
@@ -92,12 +95,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("742 ev_DIFFERENT")
+                .addressLine1("FLAT B_DIFFERENT")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isTrue();
     }
@@ -107,12 +110,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("742")
+                .addressLine1("Flat")
                 .postcode("AA11AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isFalse();
     }
@@ -122,12 +125,12 @@ public class HouseholdVerifierTest {
         Adult adult = Adult.builder()
                 .firstForename("Lisa")
                 .surname("Simpson")
-                .addressLine1("742 Evergreen Terrace")
+                .addressLine1("Flat b")
                 .postcode("AA1 1AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
-        Boolean response = householdVerifier.detailsMatch(household, aPerson());
+        Boolean response = householdVerifier.detailsMatch(household, aValidHMRCPerson());
 
         assertThat(response).isTrue();
     }
