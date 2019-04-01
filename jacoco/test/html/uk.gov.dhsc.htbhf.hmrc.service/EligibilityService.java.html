@@ -5,8 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
-import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
+import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.util.Optional;
@@ -34,7 +34,7 @@ public class EligibilityService {
 <span class="fc" id="L34">        this.restTemplate = restTemplate;</span>
 <span class="fc" id="L35">    }</span>
 
-    public EligibilityResponse checkEligibility(EligibilityRequest eligibilityRequest) {
+    public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
 <span class="fc" id="L38">        Optional&lt;Household&gt; household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());</span>
 <span class="fc bfc" id="L39" title="All 2 branches covered.">        if (household.isPresent()) {</span>
 <span class="fc" id="L40">            return getEligibilityResponse(eligibilityRequest, household.get());</span>
@@ -43,13 +43,13 @@ public class EligibilityService {
 <span class="fc" id="L43">        return getResponseFromHMRC(eligibilityRequest);</span>
     }
 
-    private EligibilityResponse getEligibilityResponse(EligibilityRequest eligibilityRequest, Household household) {
+    private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
 <span class="pc bpc" id="L47" title="1 of 2 branches missed.">        return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())</span>
 <span class="fc" id="L48">                ? createEligibilityResponse(household)</span>
 <span class="nc" id="L49">                : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();</span>
     }
 
-    private EligibilityResponse getResponseFromHMRC(EligibilityRequest eligibilityRequest) {
+    private EligibilityResponse getResponseFromHMRC(HMRCEligibilityRequest eligibilityRequest) {
 <span class="fc" id="L53">        ResponseEntity&lt;EligibilityResponse&gt; response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);</span>
 <span class="fc" id="L54">        return response.getBody();</span>
     }
