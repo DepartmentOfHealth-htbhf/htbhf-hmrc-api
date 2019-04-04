@@ -1,5 +1,6 @@
 package uk.gov.dhsc.htbhf.hmrc.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.NOMATCH;
 
 
 @Service
+@Slf4j
 public class EligibilityService {
 
     private static final String ENDPOINT = "/v1/hmrc/benefits";
@@ -37,9 +39,11 @@ public class EligibilityService {
     public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
         Optional<Household> household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());
         if (household.isPresent()) {
+            log.debug("Matched CTC household: {}", household.get().getHouseholdIdentifier());
             return getEligibilityResponse(eligibilityRequest, household.get());
         }
 
+        log.debug("No match found in db - calling HMRC to check eligibility");
         return getResponseFromHMRC(eligibilityRequest);
     }
 
