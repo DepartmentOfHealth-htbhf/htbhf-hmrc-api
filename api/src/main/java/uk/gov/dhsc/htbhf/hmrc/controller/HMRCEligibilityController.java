@@ -34,10 +34,11 @@ public class HMRCEligibilityController {
                                            @Valid
                                            @ApiParam("The eligibility request for HMRC for Healthy Start")
                                            EligibilityRequest eligibilityRequest) {
-        log.debug("Received HMRC eligibility request");
 
         HMRCEligibilityRequest request = converter.convert(eligibilityRequest);
+        EligibilityResponse eligibilityResponse = eligibilityService.checkEligibility(request);
 
-        return eligibilityService.checkEligibility(request);
+        log.debug("HMRC eligibility status: {}", eligibilityResponse.getEligibilityStatus());
+        return eligibilityResponse;
     }
 }
