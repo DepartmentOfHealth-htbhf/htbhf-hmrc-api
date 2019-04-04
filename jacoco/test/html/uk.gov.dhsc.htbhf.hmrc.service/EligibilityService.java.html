@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>EligibilityService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">htbhf-hmrc-api</a> &gt; <a href="index.source.html" class="el_package">uk.gov.dhsc.htbhf.hmrc.service</a> &gt; <span class="el_source">EligibilityService.java</span></div><h1>EligibilityService.java</h1><pre class="source lang-java linenums">package uk.gov.dhsc.htbhf.hmrc.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.NOMATCH;
 
 
 @Service
+<span class="fc" id="L20">@Slf4j</span>
 public class EligibilityService {
 
     private static final String ENDPOINT = &quot;/v1/hmrc/benefits&quot;;
@@ -27,31 +29,33 @@ public class EligibilityService {
     public EligibilityService(@Value(&quot;${hmrc.base-uri}&quot;) String baseUri,
                               HouseholdRepository repository,
                               HouseholdVerifier householdVerifier,
-<span class="fc" id="L30">                              RestTemplate restTemplate) {</span>
-<span class="fc" id="L31">        this.uri = baseUri + ENDPOINT;</span>
-<span class="fc" id="L32">        this.repository = repository;</span>
-<span class="fc" id="L33">        this.householdVerifier = householdVerifier;</span>
-<span class="fc" id="L34">        this.restTemplate = restTemplate;</span>
-<span class="fc" id="L35">    }</span>
+<span class="fc" id="L32">                              RestTemplate restTemplate) {</span>
+<span class="fc" id="L33">        this.uri = baseUri + ENDPOINT;</span>
+<span class="fc" id="L34">        this.repository = repository;</span>
+<span class="fc" id="L35">        this.householdVerifier = householdVerifier;</span>
+<span class="fc" id="L36">        this.restTemplate = restTemplate;</span>
+<span class="fc" id="L37">    }</span>
 
     public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
-<span class="fc" id="L38">        Optional&lt;Household&gt; household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());</span>
-<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (household.isPresent()) {</span>
-<span class="fc" id="L40">            return getEligibilityResponse(eligibilityRequest, household.get());</span>
+<span class="fc" id="L40">        Optional&lt;Household&gt; household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());</span>
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (household.isPresent()) {</span>
+<span class="fc" id="L42">            log.debug(&quot;Matched CTC household: {}&quot;, household.get().getHouseholdIdentifier());</span>
+<span class="fc" id="L43">            return getEligibilityResponse(eligibilityRequest, household.get());</span>
         }
 
-<span class="fc" id="L43">        return getResponseFromHMRC(eligibilityRequest);</span>
+<span class="fc" id="L46">        log.debug(&quot;No match found in db - calling HMRC to check eligibility&quot;);</span>
+<span class="fc" id="L47">        return getResponseFromHMRC(eligibilityRequest);</span>
     }
 
     private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
-<span class="pc bpc" id="L47" title="1 of 2 branches missed.">        return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())</span>
-<span class="fc" id="L48">                ? createEligibilityResponse(household)</span>
-<span class="nc" id="L49">                : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();</span>
+<span class="pc bpc" id="L51" title="1 of 2 branches missed.">        return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())</span>
+<span class="fc" id="L52">                ? createEligibilityResponse(household)</span>
+<span class="nc" id="L53">                : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();</span>
     }
 
     private EligibilityResponse getResponseFromHMRC(HMRCEligibilityRequest eligibilityRequest) {
-<span class="fc" id="L53">        ResponseEntity&lt;EligibilityResponse&gt; response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);</span>
-<span class="fc" id="L54">        return response.getBody();</span>
+<span class="fc" id="L57">        ResponseEntity&lt;EligibilityResponse&gt; response = restTemplate.postForEntity(uri, eligibilityRequest, EligibilityResponse.class);</span>
+<span class="fc" id="L58">        return response.getBody();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

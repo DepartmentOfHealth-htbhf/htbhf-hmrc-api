@@ -34,11 +34,12 @@ public class HMRCEligibilityController {
                                            @Valid
                                            @ApiParam(&quot;The eligibility request for HMRC for Healthy Start&quot;)
                                            EligibilityRequest eligibilityRequest) {
-<span class="fc" id="L37">        log.debug(&quot;Received HMRC eligibility request&quot;);</span>
 
-<span class="fc" id="L39">        HMRCEligibilityRequest request = converter.convert(eligibilityRequest);</span>
+<span class="fc" id="L38">        HMRCEligibilityRequest request = converter.convert(eligibilityRequest);</span>
+<span class="fc" id="L39">        EligibilityResponse eligibilityResponse = eligibilityService.checkEligibility(request);</span>
 
-<span class="fc" id="L41">        return eligibilityService.checkEligibility(request);</span>
+<span class="fc" id="L41">        log.debug(&quot;HMRC eligibility status: {}&quot;, eligibilityResponse.getEligibilityStatus());</span>
+<span class="fc" id="L42">        return eligibilityResponse;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
