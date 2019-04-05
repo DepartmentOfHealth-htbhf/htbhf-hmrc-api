@@ -9,7 +9,7 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.AddressDTOTestDataFactory.aValid
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DOB;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_NINO;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_SURNAME;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_SURNAME;
 
 public class PersonDTOTestFactory {
 
@@ -43,7 +43,7 @@ public class PersonDTOTestFactory {
                 .nino(LISA_NINO)
                 .address(aValidAddress())
                 .firstName(LISA_FORENAME)
-                .lastName(LISA_SURNAME);
+                .lastName(SIMPSONS_SURNAME);
     }
 
 }

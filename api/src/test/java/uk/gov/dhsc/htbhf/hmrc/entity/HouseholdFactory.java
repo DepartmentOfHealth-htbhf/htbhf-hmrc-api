@@ -12,7 +12,7 @@ public class HouseholdFactory {
                 .addAdult(anAdult(HOMER_FORENAME, SIMPSONS_SURNAME, HOMER_NINO))
                 .addAdult(anAdult(MARGE_FORENAME, SIMPSONS_SURNAME, MARGE_NINO))
                 .addChild(aChild("Bart", SIMPSONS_SURNAME, 48))
-                .addChild(aChild("Lisa", SIMPSONS_SURNAME, 24))
+                .addChild(aChild(LISA_FORENAME, SIMPSONS_SURNAME, 24))
                 .addChild(aChild("Maggie", SIMPSONS_SURNAME, 6));
     }
 

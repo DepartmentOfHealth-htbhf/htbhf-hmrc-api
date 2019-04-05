@@ -14,7 +14,6 @@ public class TestConstants {
     public static final LocalDate LISA_DOB = LocalDate.parse("1985-12-31");
     public static final String LISA_NINO = "EB123456C";
     public static final String LISA_FORENAME = "Lisa";
-    public static final String LISA_SURNAME = SIMPSONS_SURNAME;
 
     public static final LocalDate HOMER_DOB = LocalDate.parse("1965-12-31");
     public static final String HOMER_NINO = "EB654321B";
