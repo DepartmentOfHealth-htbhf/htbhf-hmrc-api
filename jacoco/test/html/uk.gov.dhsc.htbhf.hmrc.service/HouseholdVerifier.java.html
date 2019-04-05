@@ -17,7 +17,7 @@ import uk.gov.dhsc.htbhf.hmrc.model.HMRCPersonDTO;
     private boolean adultMatchesPerson(Adult adult, HMRCPersonDTO person) {
 <span class="fc bfc" id="L18" title="All 2 branches covered.">        return areEqual(adult.getSurname(), person.getSurname())</span>
 <span class="fc bfc" id="L19" title="All 2 branches covered.">                &amp;&amp; firstSixCharacterMatch(person.getAddress().getAddressLine1(), adult.getAddressLine1())</span>
-<span class="pc bpc" id="L20" title="1 of 2 branches missed.">                &amp;&amp; areEqualIgnoringWhitespace(adult.getPostcode(), person.getAddress().getPostcode());</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">                &amp;&amp; areEqualIgnoringWhitespace(adult.getPostcode(), person.getAddress().getPostcode());</span>
     }
 
     private boolean firstSixCharacterMatch(String s1, String s2) {
