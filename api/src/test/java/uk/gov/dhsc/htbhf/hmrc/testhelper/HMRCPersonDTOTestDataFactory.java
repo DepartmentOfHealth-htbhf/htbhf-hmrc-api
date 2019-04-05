@@ -3,10 +3,7 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCPersonDTO;
 
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.AddressDTOTestDataFactory.aValidAddress;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DOB;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_NINO;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_SURNAME;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.*;
 
 public class HMRCPersonDTOTestDataFactory {
 
@@ -20,6 +17,6 @@ public class HMRCPersonDTOTestDataFactory {
                 .nino(LISA_NINO)
                 .address(aValidAddress())
                 .forename(LISA_FORENAME)
-                .surname(LISA_SURNAME);
+                .surname(SIMPSONS_SURNAME);
     }
 }

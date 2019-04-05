@@ -7,6 +7,10 @@ import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHouseholdWithNoAdultsOrChildren;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCPersonDTOTestDataFactory.aValidHMRCPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_1;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_POSTCODE;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_SURNAME;
 
 /**
  * To match a valid address use address data defined in AddressDTOTestDataFactory.
@@ -18,10 +22,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnTrueWhenPersonMatchesHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
-                .addressLine1("Flat b")
-                .postcode("AA11AA")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1)
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -33,10 +37,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnFalseWhenSurnameDoesNotMatchHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
+                .firstForename(LISA_FORENAME)
                 .surname("Smith")
-                .addressLine1("Flat b")
-                .postcode("AA11AA")
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1)
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -48,10 +52,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnFalseWhenAddressLine1DoesNotMatchHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
                 .addressLine1("Fake apartment")
-                .postcode("AA11AA")
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -63,9 +67,9 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnFalseWhenPostcodeDoesNotMatchHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
-                .addressLine1("742 Evergreen Terrace")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1)
                 .postcode("W1 1NA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
@@ -78,10 +82,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnTrueWhenAddressLine1FirstSixCharactersMatchesHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
-                .addressLine1("Flat b_DIFFERENT")
-                .postcode("AA11AA")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
+                .addressLine1("742 Evenwood Drive")
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -93,10 +97,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnTrueWhenAddressLine1FirstSixCharactersDifferentCaseMatchesHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
-                .addressLine1("FLAT B_DIFFERENT")
-                .postcode("AA11AA")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1.toUpperCase())
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -108,10 +112,10 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnFalseWhenAddressLine1UnderSixCharacterDoesNotMatchHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
                 .addressLine1("Flat")
-                .postcode("AA11AA")
+                .postcode(SIMPSONS_POSTCODE)
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);
 
@@ -123,9 +127,9 @@ public class HouseholdVerifierTest {
     @Test
     void shouldReturnTrueWhenPostcodeMatchesWithSpacesHousehold() {
         Adult adult = Adult.builder()
-                .firstForename("Lisa")
-                .surname("Simpson")
-                .addressLine1("Flat b")
+                .firstForename(LISA_FORENAME)
+                .surname(SIMPSONS_SURNAME)
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1)
                 .postcode("AA1 1AA")
                 .build();
         Household household = aHouseholdWithNoAdultsOrChildren().build().addAdult(adult);

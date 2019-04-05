@@ -2,12 +2,12 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.AddressDTO;
 
-public class AddressDTOTestDataFactory {
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_1;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_2;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_POSTCODE;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_TOWN_OR_CITY;
 
-    private static final String ADDRESS_LINE_1 = "Flat b";
-    private static final String ADDRESS_LINE_2 = "123 Fake street";
-    private static final String TOWN_OR_CITY = "Springfield";
-    private static final String POSTCODE = "AA1 1AA";
+public class AddressDTOTestDataFactory {
 
     public static AddressDTO aValidAddress() {
         return aValidAddressBuilder().build();
@@ -31,9 +31,9 @@ public class AddressDTOTestDataFactory {
 
     private static AddressDTO.AddressDTOBuilder aValidAddressBuilder() {
         return AddressDTO.builder()
-                .addressLine1(ADDRESS_LINE_1)
-                .addressLine2(ADDRESS_LINE_2)
-                .townOrCity(TOWN_OR_CITY)
-                .postcode(POSTCODE);
+                .addressLine1(SIMPSONS_ADDRESS_LINE_1)
+                .addressLine2(SIMPSONS_ADDRESS_LINE_2)
+                .townOrCity(SIMPSONS_TOWN_OR_CITY)
+                .postcode(SIMPSONS_POSTCODE);
     }
 }
