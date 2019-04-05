@@ -6,7 +6,7 @@ import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibleResponse;
+import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
 
 
@@ -16,7 +16,7 @@ public class EligibilityResponseFactoryTest {
     void shouldCreateResponseFromHousehold() {
         Household household = aHousehold();
 
-        EligibilityResponse response = createEligibleResponse(household);
+        EligibilityResponse response = createEligibilityResponse(household, EligibilityStatus.ELIGIBLE);
 
         assertThat(response.getEligibilityStatus()).isEqualTo(EligibilityStatus.ELIGIBLE);
         assertThat(response.getHouseholdIdentifier()).isEqualTo(household.getHouseholdIdentifier());

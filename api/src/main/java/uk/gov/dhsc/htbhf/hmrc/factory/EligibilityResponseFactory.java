@@ -10,9 +10,9 @@ import java.util.Set;
 
 public class EligibilityResponseFactory {
 
-    public static EligibilityResponse createEligibleResponse(Household household) {
+    public static EligibilityResponse createEligibilityResponse(Household household, EligibilityStatus status) {
         return EligibilityResponse.builder()
-                .eligibilityStatus(EligibilityStatus.ELIGIBLE)
+                .eligibilityStatus(status)
                 .numberOfChildrenUnderOne(getNumberOfChildrenUnderOne(household.getChildren()))
                 .numberOfChildrenUnderFour(getNumberOfChildrenUnderFour(household.getChildren()))
                 .householdIdentifier(household.getHouseholdIdentifier())

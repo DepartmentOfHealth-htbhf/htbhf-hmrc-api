@@ -12,9 +12,9 @@ import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.util.Optional;
 
-import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibleResponse;
+import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibilityResponse;
+import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.NOMATCH;
-
 
 @Service
 @Slf4j
@@ -49,7 +49,7 @@ public class EligibilityService {
 
     private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
         return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())
-                ? createEligibleResponse(household)
+                ? createEligibilityResponse(household, ELIGIBLE)
                 : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();
     }
 
