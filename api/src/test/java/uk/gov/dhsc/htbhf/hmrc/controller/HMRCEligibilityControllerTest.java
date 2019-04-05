@@ -32,7 +32,7 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestFactory.aPersonWith
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class HMRCEligibilityControllerIntegrationTest {
+class HMRCEligibilityControllerTest {
 
     private static final URI ENDPOINT = URI.create("/v1/hmrc/eligibility");
 
