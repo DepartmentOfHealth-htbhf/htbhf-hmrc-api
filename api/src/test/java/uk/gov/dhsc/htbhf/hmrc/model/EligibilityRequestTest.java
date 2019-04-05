@@ -15,7 +15,7 @@ class EligibilityRequestTest extends AbstractValidationTest {
     @Test
     void shouldSuccessfullyValidateAValidEligibilityRequest() {
         //Given
-        EligibilityRequest request = anEligibilityRequest();
+        EligibilityRequest request = aValidEligibilityRequest();
         //When
         Set<ConstraintViolation<EligibilityRequest>> violations = validator.validate(request);
         //Then

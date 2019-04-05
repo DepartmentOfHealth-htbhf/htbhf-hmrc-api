@@ -2,15 +2,13 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCPersonDTO;
 
-import java.time.LocalDate;
-
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.AddressDTOTestDataFactory.aValidAddress;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DOB;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_NINO;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_SURNAME;
 
 public class HMRCPersonDTOTestDataFactory {
-    private static final LocalDate DOB = LocalDate.parse("1985-12-31");
-    private static final String NINO = "EB123456C";
-    private static final String FORENAME = "Lisa";
-    private static final String SURNAME = "Simpson";
 
     public static HMRCPersonDTO aValidHMRCPerson() {
         return buildDefaultHMRCPerson().build();
@@ -18,10 +16,10 @@ public class HMRCPersonDTOTestDataFactory {
 
     private static HMRCPersonDTO.HMRCPersonDTOBuilder buildDefaultHMRCPerson() {
         return HMRCPersonDTO.builder()
-                .dateOfBirth(DOB)
-                .nino(NINO)
+                .dateOfBirth(LISA_DOB)
+                .nino(LISA_NINO)
                 .address(aValidAddress())
-                .forename(FORENAME)
-                .surname(SURNAME);
+                .forename(LISA_FORENAME)
+                .surname(LISA_SURNAME);
     }
 }

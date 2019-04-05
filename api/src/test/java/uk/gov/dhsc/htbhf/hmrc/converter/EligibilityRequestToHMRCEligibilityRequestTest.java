@@ -5,14 +5,14 @@ import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequest;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.aValidEligibilityRequest;
 
 public class EligibilityRequestToHMRCEligibilityRequestTest {
     private EligibilityRequestToHMRCEligibilityRequest converter = new EligibilityRequestToHMRCEligibilityRequest();
 
     @Test
     void shouldConvertRequest() {
-        EligibilityRequest request = anEligibilityRequest();
+        EligibilityRequest request = aValidEligibilityRequest();
 
         HMRCEligibilityRequest result = converter.convert(request);
 

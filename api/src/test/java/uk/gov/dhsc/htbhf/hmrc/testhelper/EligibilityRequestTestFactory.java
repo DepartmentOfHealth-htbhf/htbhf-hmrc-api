@@ -7,14 +7,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestFactory.aValidPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.CTC_ANNUAL_INCOME_THRESHOLD;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_END_DATE;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_START_DATE;
 
 public class EligibilityRequestTestFactory {
 
-    private static final LocalDate ELIGIBLE_END_DATE = LocalDate.parse("2019-03-01");
-    private static final LocalDate ELIGIBLE_START_DATE = LocalDate.parse("2019-02-14");
-    private static final BigDecimal CTC_MONTHLY_INCOME_THRESHOLD = BigDecimal.valueOf(11000);
-
-    public static EligibilityRequest anEligibilityRequest() {
+    public static EligibilityRequest aValidEligibilityRequest() {
         return buildDefaultRequest().build();
     }
 
@@ -39,6 +38,6 @@ public class EligibilityRequestTestFactory {
                 .person(aValidPerson())
                 .eligibleStartDate(ELIGIBLE_START_DATE)
                 .eligibleEndDate(ELIGIBLE_END_DATE)
-                .ctcAnnualIncomeThreshold(CTC_MONTHLY_INCOME_THRESHOLD);
+                .ctcAnnualIncomeThreshold(CTC_ANNUAL_INCOME_THRESHOLD);
     }
 }
