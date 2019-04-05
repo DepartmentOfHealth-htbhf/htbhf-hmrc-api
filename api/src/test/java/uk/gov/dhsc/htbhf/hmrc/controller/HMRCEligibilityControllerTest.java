@@ -24,7 +24,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.springframework.http.HttpStatus.OK;
 import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequest;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.aValidEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.anEligibilityRequestWithPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestFactory.anEligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCEligibilityRequestTestDataFactory.aValidHMRCEligibilityRequest;
@@ -47,7 +47,7 @@ class HMRCEligibilityControllerTest {
 
     @Test
     void shouldReturnEligibilityResponse() {
-        EligibilityRequest eligibilityRequest = anEligibilityRequest();
+        EligibilityRequest eligibilityRequest = aValidEligibilityRequest();
         HMRCEligibilityRequest hmrcEligibilityRequest = aValidHMRCEligibilityRequest();
         given(converter.convert(any())).willReturn(hmrcEligibilityRequest);
         given(eligibilityService.checkEligibility(any())).willReturn(anEligibilityResponse());

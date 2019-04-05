@@ -2,15 +2,12 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCPersonDTOTestDataFactory.aValidHMRCPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.CTC_ANNUAL_INCOME_THRESHOLD;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_END_DATE;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_START_DATE;
 
 public class HMRCEligibilityRequestTestDataFactory {
-    private static final BigDecimal CTC_ANNUAL_INCOME_THRESHOLD = new BigDecimal(408);
-    private static final LocalDate ELIGIBLE_START_DATE = LocalDate.parse("2019-01-01");
-    private static final LocalDate ELIGIBLE_END_DATE = LocalDate.parse("2019-02-01");
 
     public static HMRCEligibilityRequest aValidHMRCEligibilityRequest() {
         return aValidEligibilityRequestBuilder().build();

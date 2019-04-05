@@ -6,16 +6,15 @@ import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 import java.time.LocalDate;
 
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.AddressDTOTestDataFactory.aValidAddress;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DOB;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_NINO;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_SURNAME;
 
 public class PersonDTOTestFactory {
 
-    private static final LocalDate DOB = LocalDate.parse("1985-12-31");
-    private static final String NINO = "EB123456C";
-    private static final String FORENAME = "Lisa";
-    private static final String SURNAME = "Simpson";
-
     public static PersonDTO aValidPerson() {
-        return buildDefaultPerson().nino("AE000000C").build();
+        return buildDefaultPerson().build();
     }
 
     public static PersonDTO aPersonWithFirstName(String forename) {
@@ -40,11 +39,11 @@ public class PersonDTOTestFactory {
 
     private static PersonDTO.PersonDTOBuilder buildDefaultPerson() {
         return PersonDTO.builder()
-                .dateOfBirth(DOB)
-                .nino(NINO)
+                .dateOfBirth(LISA_DOB)
+                .nino(LISA_NINO)
                 .address(aValidAddress())
-                .firstName(FORENAME)
-                .lastName(SURNAME);
+                .firstName(LISA_FORENAME)
+                .lastName(LISA_SURNAME);
     }
 
 }
