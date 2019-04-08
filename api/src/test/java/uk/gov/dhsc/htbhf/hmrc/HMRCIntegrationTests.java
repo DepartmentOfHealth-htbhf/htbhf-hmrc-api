@@ -1,7 +1,5 @@
 package uk.gov.dhsc.htbhf.hmrc;
 
-import org.assertj.core.api.AssertionsForClassTypes;
-import org.assertj.core.api.AssertionsForInterfaceTypes;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -21,6 +19,7 @@ import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.net.URI;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -65,7 +64,8 @@ public class HMRCIntegrationTests {
         given(restTemplateWithIdHeaders.postForEntity(anyString(), any(), eq(EligibilityResponse.class))).willReturn(hmrcEligibilityResponse);
 
         //When
-        ResponseEntity<EligibilityResponse> response = restTemplate.exchange(buildRequestEntity(aValidEligibilityRequest()), EligibilityResponse.class);
+        ResponseEntity<EligibilityResponse> response = callService(aValidEligibilityRequest());
+
         //Then
         assertResponseCorrectWithHouseholdDetails(response, HOUSEHOLD_INDENTIFIER, ELIGIBLE);
         verify(restTemplateWithIdHeaders).postForEntity(HMRC_URL, aValidHMRCEligibilityRequest(), EligibilityResponse.class);
@@ -125,10 +125,10 @@ public class HMRCIntegrationTests {
     }
 
     private void assertResponseCorrect(ResponseEntity<EligibilityResponse> response, EligibilityResponse expectedResponse) {
-        AssertionsForInterfaceTypes.assertThat(response.getStatusCode()).isEqualTo(OK);
+        assertThat(response.getStatusCode()).isEqualTo(OK);
         EligibilityResponse eligibilityResponse = response.getBody();
-        AssertionsForClassTypes.assertThat(eligibilityResponse).isNotNull();
-        AssertionsForClassTypes.assertThat(eligibilityResponse).isEqualTo(expectedResponse);
+        assertThat(eligibilityResponse).isNotNull();
+        assertThat(eligibilityResponse).isEqualTo(expectedResponse);
     }
 
     private RequestEntity buildRequestEntity(Object requestObject) {
