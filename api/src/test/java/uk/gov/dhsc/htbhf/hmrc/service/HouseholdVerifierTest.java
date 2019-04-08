@@ -5,8 +5,8 @@ import uk.gov.dhsc.htbhf.hmrc.entity.Adult;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHouseholdWithNoAdultsOrChildren;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCPersonDTOTestDataFactory.aValidHMRCPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseholdWithNoAdultsOrChildren;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_1;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_POSTCODE;

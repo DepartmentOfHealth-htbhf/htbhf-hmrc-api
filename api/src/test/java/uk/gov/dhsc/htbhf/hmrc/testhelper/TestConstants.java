@@ -5,10 +5,11 @@ import java.time.LocalDate;
 
 public class TestConstants {
 
+    public static final String HOUSEHOLD_INDENTIFIER = "household1";
     public static final String SIMPSONS_SURNAME = "Simpson";
-    public static  final String SIMPSONS_ADDRESS_LINE_1 = "742 Evergreen Terrace";
-    public static  final String SIMPSONS_ADDRESS_LINE_2 = "Mystery Spot";
-    public static  final String SIMPSONS_TOWN_OR_CITY = "Springfield";
+    public static final String SIMPSONS_ADDRESS_LINE_1 = "742 Evergreen Terrace";
+    public static final String SIMPSONS_ADDRESS_LINE_2 = "Mystery Spot";
+    public static final String SIMPSONS_TOWN_OR_CITY = "Springfield";
     public static final String SIMPSONS_POSTCODE = "AA11AA";
 
     public static final LocalDate LISA_DOB = LocalDate.parse("1985-12-31");

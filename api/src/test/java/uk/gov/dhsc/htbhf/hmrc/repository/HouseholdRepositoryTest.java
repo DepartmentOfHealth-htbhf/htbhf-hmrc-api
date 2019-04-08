@@ -11,9 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHousehold;
-import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.aHouseholdWithNoAdultsOrChildren;
-import static uk.gov.dhsc.htbhf.hmrc.entity.HouseholdFactory.anAdultWithNino;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseholdWithNoAdultsOrChildren;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.anAdultWithNino;
 
 @DataJpaTest
 public class HouseholdRepositoryTest {

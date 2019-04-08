@@ -1,12 +1,20 @@
-package uk.gov.dhsc.htbhf.hmrc.entity;
+package uk.gov.dhsc.htbhf.hmrc.testhelper;
+
+import uk.gov.dhsc.htbhf.hmrc.entity.Adult;
+import uk.gov.dhsc.htbhf.hmrc.entity.Child;
+import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 
 import java.time.LocalDate;
 
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.*;
 
-public class HouseholdFactory {
+public class HouseholdTestDataFactory {
 
     public static Household aHousehold() {
+        return aHouseholdWithChildrenAged6and24months();
+    }
+
+    public static Household aHouseholdWithChildrenAged6and24months() {
         return aHouseholdWithNoAdultsOrChildren()
                 .build()
                 .addAdult(anAdult(HOMER_FORENAME, SIMPSONS_SURNAME, HOMER_NINO))
@@ -19,7 +27,7 @@ public class HouseholdFactory {
     public static Household.HouseholdBuilder aHouseholdWithNoAdultsOrChildren() {
         return Household.builder()
                 .fileImportNumber(1)
-                .householdIdentifier("aHouseholdIdentifier")
+                .householdIdentifier(HOUSEHOLD_INDENTIFIER)
                 .build()
                 .toBuilder();
     }
