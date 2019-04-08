@@ -1,9 +1,9 @@
 package uk.gov.dhsc.htbhf.hmrc.factory;
 
+import uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus;
 import uk.gov.dhsc.htbhf.hmrc.entity.Child;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
-import uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus;
 
 import java.time.LocalDate;
 import java.util.Set;
