@@ -11,9 +11,9 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
+import uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
-import uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus;
 import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
@@ -27,8 +27,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.springframework.http.HttpStatus.OK;
-import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.ELIGIBLE;
-import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.NOMATCH;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.aValidEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.anEligibilityRequestWithPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.aValidEligibilityResponseBuilder;
@@ -100,7 +100,7 @@ public class HMRCIntegrationTests {
         ResponseEntity<EligibilityResponse> response = callService(eligibilityRequest);
 
         //Then
-        assertResponseCorrectWithStatusOnly(response, NOMATCH);
+        assertResponseCorrectWithStatusOnly(response, NO_MATCH);
         verifyZeroInteractions(restTemplateWithIdHeaders);
         householdRepository.deleteAll();
     }

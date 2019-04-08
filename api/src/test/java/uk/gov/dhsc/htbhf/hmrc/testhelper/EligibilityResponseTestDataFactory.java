@@ -2,7 +2,7 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 
-import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.ELIGIBLE;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOUSEHOLD_INDENTIFIER;
 
 public class EligibilityResponseTestDataFactory {
