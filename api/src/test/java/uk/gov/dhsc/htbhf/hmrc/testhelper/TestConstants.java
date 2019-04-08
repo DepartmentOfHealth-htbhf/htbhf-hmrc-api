@@ -12,15 +12,13 @@ public class TestConstants {
     public static final String SIMPSONS_TOWN_OR_CITY = "Springfield";
     public static final String SIMPSONS_POSTCODE = "AA11AA";
 
-    public static final LocalDate LISA_DOB = LocalDate.parse("1985-12-31");
+    public static final LocalDate LISA_DATE_OF_BIRTH = LocalDate.parse("1985-12-31");
     public static final String LISA_NINO = "EB123456C";
     public static final String LISA_FORENAME = "Lisa";
 
-    public static final LocalDate HOMER_DOB = LocalDate.parse("1965-12-31");
     public static final String HOMER_NINO = "EB654321B";
     public static final String HOMER_FORENAME = "Homer";
 
-    public static final LocalDate MARGE_DOB = LocalDate.parse("1966-01-28");
     public static final String MARGE_NINO = "EB876543A";
     public static final String MARGE_FORENAME = "Marge";
 
