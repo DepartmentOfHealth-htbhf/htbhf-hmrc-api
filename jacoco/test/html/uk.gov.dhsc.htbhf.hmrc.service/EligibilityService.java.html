@@ -12,9 +12,9 @@ import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 
 import java.util.Optional;
 
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
 import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibilityResponse;
-import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.ELIGIBLE;
-import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.NOMATCH;
 
 @Service
 <span class="fc" id="L20">@Slf4j</span>
@@ -50,7 +50,7 @@ public class EligibilityService {
     private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
 <span class="fc bfc" id="L51" title="All 2 branches covered.">        return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())</span>
 <span class="fc" id="L52">                ? createEligibilityResponse(household, ELIGIBLE)</span>
-<span class="fc" id="L53">                : EligibilityResponse.builder().eligibilityStatus(NOMATCH).build();</span>
+<span class="fc" id="L53">                : EligibilityResponse.builder().eligibilityStatus(NO_MATCH).build();</span>
     }
 
     private EligibilityResponse getResponseFromHMRC(HMRCEligibilityRequest eligibilityRequest) {
