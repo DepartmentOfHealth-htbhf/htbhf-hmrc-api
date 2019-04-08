@@ -5,7 +5,7 @@ import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOUSEHOLD_INDENTIFIER;
 
-public class EligibilityResponseTestFactory {
+public class EligibilityResponseTestDataFactory {
 
     public static EligibilityResponse anEligibilityResponse() {
         return aValidEligibilityResponseBuilder().build();

@@ -11,7 +11,7 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_FORENAME;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_NINO;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_SURNAME;
 
-public class PersonDTOTestFactory {
+public class PersonDTOTestDataFactory {
 
     public static PersonDTO aValidPerson() {
         return aValidPersonBuilder().build();

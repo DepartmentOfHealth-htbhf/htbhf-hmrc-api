@@ -7,8 +7,8 @@ import java.util.Set;
 import javax.validation.ConstraintViolation;
 
 import static uk.gov.dhsc.htbhf.assertions.ConstraintViolationAssert.assertThat;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestFactory.*;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestFactory.aPersonWithNino;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.*;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aPersonWithNino;
 
 class EligibilityRequestTest extends AbstractValidationTest {
 

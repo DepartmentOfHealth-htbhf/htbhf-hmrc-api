@@ -6,12 +6,12 @@ import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestFactory.aValidPerson;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aValidPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.CTC_ANNUAL_INCOME_THRESHOLD;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_END_DATE;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_START_DATE;
 
-public class EligibilityRequestTestFactory {
+public class EligibilityRequestTestDataFactory {
 
     public static EligibilityRequest aValidEligibilityRequest() {
         return buildDefaultRequest().build();
