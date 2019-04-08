@@ -24,9 +24,9 @@
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/AddressDTOTestDataFactory.java">
 </file>
-<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/EligibilityRequestTestFactory.java">
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/EligibilityRequestTestDataFactory.java">
 </file>
-<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/EligibilityResponseTestFactory.java">
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/EligibilityResponseTestDataFactory.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/HMRCEligibilityRequestTestDataFactory.java">
 </file>
@@ -34,7 +34,7 @@
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/HouseholdTestDataFactory.java">
 </file>
-<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/PersonDTOTestFactory.java">
+<file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/PersonDTOTestDataFactory.java">
 </file>
 <file name="/home/travis/build/DepartmentOfHealth-htbhf/htbhf-hmrc-api/api/src/test/java/uk/gov/dhsc/htbhf/hmrc/testhelper/TestConstants.java">
 </file>
