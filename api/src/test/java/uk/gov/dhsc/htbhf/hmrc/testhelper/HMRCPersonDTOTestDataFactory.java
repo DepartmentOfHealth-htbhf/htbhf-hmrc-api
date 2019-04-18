@@ -13,10 +13,10 @@ public class HMRCPersonDTOTestDataFactory {
 
     private static HMRCPersonDTO.HMRCPersonDTOBuilder buildDefaultHMRCPerson() {
         return HMRCPersonDTO.builder()
-                .dateOfBirth(LISA_DATE_OF_BIRTH)
-                .nino(LISA_NINO)
+                .dateOfBirth(HOMER_DATE_OF_BIRTH)
+                .nino(HOMER_NINO)
                 .address(aValidAddress())
-                .forename(LISA_FORENAME)
+                .forename(HOMER_FORENAME)
                 .surname(SIMPSONS_SURNAME);
     }
 }
