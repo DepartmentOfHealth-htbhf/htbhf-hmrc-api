@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
+import uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
@@ -23,6 +24,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.springframework.http.HttpStatus.OK;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
+import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.aValidEligibilityResponseBuilder;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.anEligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCEligibilityRequestTestDataFactory.aValidHMRCEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
@@ -45,6 +48,9 @@ class EligibilityServiceTest {
     @MockBean
     private HouseholdVerifier householdVerifier;
 
+    @MockBean
+    private EligibilityResponseFactory eligibilityResponseFactory;
+
     @Autowired
     private EligibilityService eligibilityService;
 
@@ -54,6 +60,8 @@ class EligibilityServiceTest {
         Household household = aHousehold();
         given(repository.findHouseholdByAdultWithNino(anyString())).willReturn(Optional.of(household));
         given(householdVerifier.detailsMatch(any(Household.class), any())).willReturn(true);
+        given(eligibilityResponseFactory.createEligibilityResponse(household, ELIGIBLE))
+                .willReturn(aValidEligibilityResponseBuilder().build());
 
         EligibilityResponse response = eligibilityService.checkEligibility(eligibilityRequest);
 
@@ -63,6 +71,7 @@ class EligibilityServiceTest {
 
         verify(repository).findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());
         verify(householdVerifier).detailsMatch(household, eligibilityRequest.getPerson());
+        verify(eligibilityResponseFactory).createEligibilityResponse(household, ELIGIBLE);
         verifyZeroInteractions(restTemplate);
     }
 

@@ -147,8 +147,7 @@ public class HMRCIntegrationTests {
         if (expected == null) {
             assertThat(actual).isNull();
         } else {
-            // containsExactlyInAnyOrder requires an array
-            assertThat(expected).containsExactlyInAnyOrder(actual.toArray(new ChildDTO[0]));
+            assertThat(expected).containsOnlyElementsOf(actual);
         }
     }
 

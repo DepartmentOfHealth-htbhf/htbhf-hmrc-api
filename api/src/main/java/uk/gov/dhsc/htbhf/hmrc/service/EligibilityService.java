@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
+import uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
@@ -14,7 +15,6 @@ import java.util.Optional;
 
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
-import static uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory.createEligibilityResponse;
 
 @Service
 @Slf4j
@@ -25,15 +25,18 @@ public class EligibilityService {
     private final HouseholdRepository repository;
     private final HouseholdVerifier householdVerifier;
     private final RestTemplate restTemplate;
+    private final EligibilityResponseFactory eligibilityResponseFactory;
 
     public EligibilityService(@Value("${hmrc.base-uri}") String baseUri,
                               HouseholdRepository repository,
                               HouseholdVerifier householdVerifier,
-                              RestTemplate restTemplate) {
+                              RestTemplate restTemplate,
+                              EligibilityResponseFactory eligibilityResponseFactory) {
         this.uri = baseUri + ENDPOINT;
         this.repository = repository;
         this.householdVerifier = householdVerifier;
         this.restTemplate = restTemplate;
+        this.eligibilityResponseFactory = eligibilityResponseFactory;
     }
 
     public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
@@ -49,7 +52,7 @@ public class EligibilityService {
 
     private EligibilityResponse getEligibilityResponse(HMRCEligibilityRequest eligibilityRequest, Household household) {
         return householdVerifier.detailsMatch(household, eligibilityRequest.getPerson())
-                ? createEligibilityResponse(household, ELIGIBLE)
+                ? eligibilityResponseFactory.createEligibilityResponse(household, ELIGIBLE)
                 : EligibilityResponse.builder().eligibilityStatus(NO_MATCH).build();
     }
 
