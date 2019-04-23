@@ -19,9 +19,9 @@ public class HouseholdTestDataFactory {
                 .build()
                 .addAdult(anAdult(HOMER_FORENAME, SIMPSONS_SURNAME, HOMER_NINO))
                 .addAdult(anAdult(MARGE_FORENAME, SIMPSONS_SURNAME, MARGE_NINO))
-                .addChild(aChild("Bart", SIMPSONS_SURNAME, 48))
-                .addChild(aChild(LISA_FORENAME, SIMPSONS_SURNAME, 24))
-                .addChild(aChild("Maggie", SIMPSONS_SURNAME, 6));
+                .addChild(aChild(BART_FORENAME, SIMPSONS_SURNAME, BART_DATE_OF_BIRTH))
+                .addChild(aChild(LISA_FORENAME, SIMPSONS_SURNAME, LISA_DATE_OF_BIRTH))
+                .addChild(aChild(MAGGIE_FORENAME, SIMPSONS_SURNAME, MAGGIE_DATE_OF_BIRTH));
     }
 
     public static Household.HouseholdBuilder aHouseholdWithNoAdultsOrChildren() {
@@ -32,11 +32,11 @@ public class HouseholdTestDataFactory {
                 .toBuilder();
     }
 
-    public static Child aChild(String forename, String surname, int ageInMonths) {
+    public static Child aChild(String forename, String surname, LocalDate dateOfBirth) {
         return Child.builder()
                 .firstForename(forename)
                 .surname(surname)
-                .dateOfBirth(LocalDate.now().minusMonths(ageInMonths))
+                .dateOfBirth(dateOfBirth)
                 .build();
     }
 
