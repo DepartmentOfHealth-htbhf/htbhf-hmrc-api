@@ -2,47 +2,33 @@ package uk.gov.dhsc.htbhf.hmrc.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import uk.gov.dhsc.htbhf.errorhandler.ErrorResponse;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import uk.gov.dhsc.htbhf.hmrc.converter.EligibilityRequestToHMRCEligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityRequest;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
-import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 import uk.gov.dhsc.htbhf.hmrc.service.EligibilityService;
-
-import java.net.URI;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.springframework.http.HttpStatus.OK;
-import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.aValidEligibilityRequest;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.anEligibilityRequestWithPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.anEligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCEligibilityRequestTestDataFactory.aValidHMRCEligibilityRequest;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aPersonWithNino;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(MockitoExtension.class)
 class HMRCEligibilityControllerTest {
 
-    private static final URI ENDPOINT = URI.create("/v1/hmrc/eligibility");
+    @InjectMocks
+    private HMRCEligibilityController controller;
 
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @MockBean
+    @Mock
     private EligibilityService eligibilityService;
 
-    @MockBean
+    @Mock
     private EligibilityRequestToHMRCEligibilityRequest converter;
 
     @Test
@@ -52,22 +38,11 @@ class HMRCEligibilityControllerTest {
         given(converter.convert(any())).willReturn(hmrcEligibilityRequest);
         given(eligibilityService.checkEligibility(any())).willReturn(anEligibilityResponse());
 
-        ResponseEntity<EligibilityResponse> response = restTemplate.postForEntity(ENDPOINT, eligibilityRequest, EligibilityResponse.class);
+        EligibilityResponse response = controller.getBenefits(eligibilityRequest);
 
-        assertThat(response.getStatusCode()).isEqualTo(OK);
-        assertThat(response.getBody()).isEqualTo(anEligibilityResponse());
+        assertThat(response).isEqualTo(anEligibilityResponse());
         verify(converter).convert(eligibilityRequest);
         verify(eligibilityService).checkEligibility(hmrcEligibilityRequest);
-    }
-
-    @Test
-    void shouldReturnBadRequestForInvalidEligibilityRequest() {
-        PersonDTO invalidPerson = aPersonWithNino(null);
-        EligibilityRequest request = anEligibilityRequestWithPerson(invalidPerson);
-
-        ResponseEntity<ErrorResponse> errorResponse = restTemplate.postForEntity(ENDPOINT, request, ErrorResponse.class);
-
-        assertValidationErrorInResponse(errorResponse, "person.nino", "must not be null");
     }
 
 }

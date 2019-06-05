@@ -1,8 +1,6 @@
 package uk.gov.dhsc.htbhf.hmrc.factory;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 import uk.gov.dhsc.htbhf.hmrc.model.ChildDTO;
@@ -13,12 +11,9 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseh
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DATE_OF_BIRTH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.MAGGIE_DATE_OF_BIRTH;
 
-
-@SpringBootTest
 public class EligibilityResponseFactoryTest {
 
-    @Autowired
-    private EligibilityResponseFactory eligibilityResponseFactory;
+    private EligibilityResponseFactory eligibilityResponseFactory = new EligibilityResponseFactory();
 
     @Test
     void shouldCreateResponseFromHousehold() {
