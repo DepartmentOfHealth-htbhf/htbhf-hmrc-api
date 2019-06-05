@@ -1,13 +1,12 @@
 package uk.gov.dhsc.htbhf.hmrc.service;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.web.client.RestTemplate;
 import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 import uk.gov.dhsc.htbhf.hmrc.factory.EligibilityResponseFactory;
@@ -30,29 +29,32 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFacto
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCEligibilityRequestTestDataFactory.aValidHMRCEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class EligibilityServiceTest {
 
     private static final String ENDPOINT = "/v1/hmrc/benefits";
 
-    @Value("${hmrc.base-uri}")
-    private String hmrcUri;
+    private String hmrcUri = "http://localhost:8130";
 
-    @MockBean
+    @Mock
     private RestTemplate restTemplate;
 
-    @MockBean
+    @Mock
     private HouseholdRepository repository;
 
-    @MockBean
+    @Mock
     private HouseholdVerifier householdVerifier;
 
-    @MockBean
+    @Mock
     private EligibilityResponseFactory eligibilityResponseFactory;
 
-    @Autowired
+    @InjectMocks
     private EligibilityService eligibilityService;
+
+    @BeforeEach
+    public void setUp() {
+        eligibilityService = new EligibilityService(hmrcUri, repository, householdVerifier, restTemplate, eligibilityResponseFactory);
+    }
 
     @Test
     void shouldReturnResponseFromDatabaseIfFound() {
