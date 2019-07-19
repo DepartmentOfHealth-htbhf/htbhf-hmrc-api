@@ -1,7 +1,5 @@
 package uk.gov.dhsc.htbhf.hmrc;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -11,11 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.cloud.contract.wiremock.AutoConfigureWireMock;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus;
 import uk.gov.dhsc.htbhf.errorhandler.ErrorResponse;
 import uk.gov.dhsc.htbhf.hmrc.model.ChildDTO;
@@ -27,7 +21,6 @@ import uk.gov.dhsc.htbhf.hmrc.repository.HouseholdRepository;
 import java.net.URI;
 import java.util.List;
 
-import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
@@ -36,7 +29,6 @@ import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.aValidEligibilityRequest;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityRequestTestDataFactory.anEligibilityRequestWithPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.aValidEligibilityResponseBuilder;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.anEligibilityResponse;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseholdWithChildrenAged6and24months;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aPersonWithNino;
@@ -50,16 +42,11 @@ public class HMRCIntegrationTests {
 
     private static final URI ENDPOINT = URI.create("/v1/hmrc/eligibility");
 
-    private static final String HMRC_URL = "/v1/hmrc/benefits";
-
     @Autowired
     private TestRestTemplate restTemplate;
 
     @Autowired
     private HouseholdRepository householdRepository;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @AfterEach
     public void tearDown() {
@@ -67,17 +54,12 @@ public class HMRCIntegrationTests {
     }
 
     @Test
-    void shouldReturnEligibilityResponseWhenNotInDatabase() throws JsonProcessingException {
-        //Given
-        EligibilityResponse hmrcEligibilityResponse = anEligibilityResponse();
-        stubHMRCEndpointWithSuccessfulResponse(hmrcEligibilityResponse);
-
+    void shouldReturnNoMatchResponseWhenNotInDatabase() {
         //When
         ResponseEntity<EligibilityResponse> response = callService(aValidEligibilityRequest());
 
         //Then
-        assertResponseCorrectWithHouseholdDetails(response, HOUSEHOLD_INDENTIFIER, ELIGIBLE);
-        verifyHMRCEndpointCalled();
+        assertResponseCorrectWithStatusOnly(response, NO_MATCH);
     }
 
     @Test
@@ -104,7 +86,6 @@ public class HMRCIntegrationTests {
 
         //Then
         assertResponseCorrectWithHouseholdDetails(response, HOUSEHOLD_INDENTIFIER, ELIGIBLE);
-        verifyHMRCEndpointNotCalled();
         householdRepository.deleteAll();
     }
 
@@ -120,21 +101,7 @@ public class HMRCIntegrationTests {
 
         //Then
         assertResponseCorrectWithStatusOnly(response, NO_MATCH);
-        verifyHMRCEndpointNotCalled();
         householdRepository.deleteAll();
-    }
-
-    private void stubHMRCEndpointWithSuccessfulResponse(EligibilityResponse eligibilityResponse) throws JsonProcessingException {
-        String json = objectMapper.writeValueAsString(eligibilityResponse);
-        stubFor(post(urlEqualTo(HMRC_URL)).willReturn(okJson(json)));
-    }
-
-    private void verifyHMRCEndpointCalled() {
-        verify(exactly(1), postRequestedFor(urlEqualTo(HMRC_URL)));
-    }
-
-    private void verifyHMRCEndpointNotCalled() {
-        verify(exactly(0), postRequestedFor(urlEqualTo(HMRC_URL)));
     }
 
     private ResponseEntity<EligibilityResponse> callService(EligibilityRequest eligibilityRequest) {

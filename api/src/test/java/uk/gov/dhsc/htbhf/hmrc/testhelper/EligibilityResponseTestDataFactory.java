@@ -7,6 +7,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
+import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOUSEHOLD_INDENTIFIER;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DATE_OF_BIRTH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.MAGGIE_DATE_OF_BIRTH;
@@ -15,6 +16,12 @@ public class EligibilityResponseTestDataFactory {
 
     public static EligibilityResponse anEligibilityResponse() {
         return aValidEligibilityResponseBuilder().build();
+    }
+
+    public static EligibilityResponse anEligibilityResponseWithNoMatchStatus() {
+        return EligibilityResponse.builder()
+                .eligibilityStatus(NO_MATCH)
+                .build();
     }
 
     /**

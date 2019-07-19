@@ -39,9 +39,6 @@ logging:
 server:
   port: 8130
 
-hmrc:
-  base-uri: ${vcap.services.variable-service.credentials.hmrc-api-uri:http://localhost:8120}
-
 postgres:
   service:
     id: "htbhf-eligibility-api-postgres"
