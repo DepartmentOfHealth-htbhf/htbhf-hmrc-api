@@ -32,7 +32,7 @@ public class EligibilityService {
     public EligibilityResponse checkEligibility(HMRCEligibilityRequest eligibilityRequest) {
 <span class="fc" id="L33">        Optional&lt;Household&gt; household = repository.findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());</span>
 <span class="fc bfc" id="L34" title="All 2 branches covered.">        if (household.isPresent()) {</span>
-<span class="fc" id="L35">            log.debug(&quot;Matched CTC household: {}&quot;, household.get().getHouseholdIdentifier());</span>
+<span class="fc" id="L35">            log.debug(&quot;Matched CTC household: {}&quot;, household.get().getId());</span>
 <span class="fc" id="L36">            return getEligibilityResponse(eligibilityRequest, household.get());</span>
         }
 
