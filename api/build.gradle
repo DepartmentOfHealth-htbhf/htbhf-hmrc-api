@@ -16,7 +16,7 @@ plugins {
     id "com.github.spotbugs" version "2.0.0"
     id 'pmd'
     id 'checkstyle'
-    id "org.springframework.boot" version "2.1.9.RELEASE"
+    id "org.springframework.boot" version "2.2.0.RELEASE"
 }
 
 apply plugin: 'java'
