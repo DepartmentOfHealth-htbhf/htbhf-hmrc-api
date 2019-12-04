@@ -6,11 +6,11 @@ import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static uk.gov.dhsc.htbhf.TestConstants.HMRC_HOUSEHOLD_IDENTIFIER;
+import static uk.gov.dhsc.htbhf.TestConstants.LISA_DATE_OF_BIRTH;
+import static uk.gov.dhsc.htbhf.TestConstants.MAGGIE_DATE_OF_BIRTH;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOUSEHOLD_INDENTIFIER;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DATE_OF_BIRTH;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.MAGGIE_DATE_OF_BIRTH;
 
 public class EligibilityResponseTestDataFactory {
 
@@ -26,6 +26,7 @@ public class EligibilityResponseTestDataFactory {
 
     /**
      * Returns an eligibility response matching the household from HouseholdTestDataFactory.
+     *
      * @return an eligibility response matching the household from HouseholdTestDataFactory.
      */
     public static EligibilityResponse.EligibilityResponseBuilder aValidEligibilityResponseBuilder() {
@@ -33,7 +34,7 @@ public class EligibilityResponseTestDataFactory {
                 .eligibilityStatus(ELIGIBLE)
                 .numberOfChildrenUnderOne(1)
                 .numberOfChildrenUnderFour(2)
-                .householdIdentifier(HOUSEHOLD_INDENTIFIER)
+                .householdIdentifier(HMRC_HOUSEHOLD_IDENTIFIER)
                 .children(createChildren());
     }
 

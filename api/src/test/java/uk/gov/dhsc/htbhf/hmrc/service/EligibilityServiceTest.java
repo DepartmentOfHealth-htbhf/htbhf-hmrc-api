@@ -19,7 +19,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.aValidEligibilityResponseBuilder;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.EligibilityResponseTestDataFactory.anEligibilityResponseWithNoMatchStatus;
@@ -75,6 +75,6 @@ class EligibilityServiceTest {
 
         assertThat(response).isEqualTo(anEligibilityResponseWithNoMatchStatus());
         verify(repository).findHouseholdByAdultWithNino(eligibilityRequest.getPerson().getNino());
-        verifyZeroInteractions(householdVerifier);
+        verifyNoInteractions(householdVerifier);
     }
 }

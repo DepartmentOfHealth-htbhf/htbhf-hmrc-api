@@ -6,7 +6,7 @@ import uk.gov.dhsc.htbhf.hmrc.entity.Household;
 
 import java.time.LocalDate;
 
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.*;
+import static uk.gov.dhsc.htbhf.TestConstants.*;
 
 public class HouseholdTestDataFactory {
 
@@ -17,22 +17,22 @@ public class HouseholdTestDataFactory {
     public static Household aHouseholdWithChildrenAged6and24months() {
         return aHouseholdWithNoAdultsOrChildren()
                 .build()
-                .addAdult(anAdult(HOMER_FORENAME, SIMPSONS_SURNAME, HOMER_NINO))
-                .addAdult(anAdult(MARGE_FORENAME, SIMPSONS_SURNAME, MARGE_NINO))
-                .addChild(aChild(BART_FORENAME, SIMPSONS_SURNAME, BART_DATE_OF_BIRTH))
-                .addChild(aChild(LISA_FORENAME, SIMPSONS_SURNAME, LISA_DATE_OF_BIRTH))
-                .addChild(aChild(MAGGIE_FORENAME, SIMPSONS_SURNAME, MAGGIE_DATE_OF_BIRTH));
+                .addAdult(anAdult(HOMER_FORENAME, SIMPSON_SURNAME, HOMER_NINO_V1))
+                .addAdult(anAdult(MARGE_FORENAME, SIMPSON_SURNAME, MARGE_NINO))
+                .addChild(aChild(BART_FORENAME, SIMPSON_SURNAME, BART_DATE_OF_BIRTH))
+                .addChild(aChild(LISA_FORENAME, SIMPSON_SURNAME, LISA_DATE_OF_BIRTH))
+                .addChild(aChild(MAGGIE_FORENAME, SIMPSON_SURNAME, MAGGIE_DATE_OF_BIRTH));
     }
 
     public static Household.HouseholdBuilder aHouseholdWithNoAdultsOrChildren() {
         return Household.builder()
                 .fileImportNumber(1)
-                .householdIdentifier(HOUSEHOLD_INDENTIFIER)
+                .householdIdentifier(HMRC_HOUSEHOLD_IDENTIFIER)
                 .build()
                 .toBuilder();
     }
 
-    public static Child aChild(String forename, String surname, LocalDate dateOfBirth) {
+    private static Child aChild(String forename, String surname, LocalDate dateOfBirth) {
         return Child.builder()
                 .firstForename(forename)
                 .surname(surname)
@@ -40,7 +40,7 @@ public class HouseholdTestDataFactory {
                 .build();
     }
 
-    public static Adult anAdult(String forename, String surname, String nino) {
+    private static Adult anAdult(String forename, String surname, String nino) {
         return Adult.builder()
                 .firstForename(forename)
                 .surname(surname)
@@ -55,7 +55,7 @@ public class HouseholdTestDataFactory {
     public static Adult anAdultWithNino(String nino) {
         return Adult.builder()
                 .firstForename(HOMER_FORENAME)
-                .surname(SIMPSONS_SURNAME)
+                .surname(SIMPSON_SURNAME)
                 .nino(nino)
                 .addressLine1(SIMPSONS_ADDRESS_LINE_1)
                 .addressLine2(SIMPSONS_ADDRESS_LINE_2)

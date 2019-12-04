@@ -5,11 +5,11 @@ import uk.gov.dhsc.htbhf.hmrc.model.PersonDTO;
 
 import java.time.LocalDate;
 
+import static uk.gov.dhsc.htbhf.TestConstants.HOMER_DATE_OF_BIRTH;
+import static uk.gov.dhsc.htbhf.TestConstants.HOMER_FORENAME;
+import static uk.gov.dhsc.htbhf.TestConstants.HOMER_NINO_V1;
+import static uk.gov.dhsc.htbhf.TestConstants.SIMPSON_SURNAME;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.AddressDTOTestDataFactory.aValidAddress;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOMER_DATE_OF_BIRTH;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOMER_FORENAME;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOMER_NINO;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_SURNAME;
 
 public class PersonDTOTestDataFactory {
 
@@ -40,10 +40,10 @@ public class PersonDTOTestDataFactory {
     public static PersonDTO.PersonDTOBuilder aValidPersonBuilder() {
         return PersonDTO.builder()
                 .dateOfBirth(HOMER_DATE_OF_BIRTH)
-                .nino(HOMER_NINO)
+                .nino(HOMER_NINO_V1)
                 .address(aValidAddress())
                 .firstName(HOMER_FORENAME)
-                .lastName(SIMPSONS_SURNAME);
+                .lastName(SIMPSON_SURNAME);
     }
 
 }

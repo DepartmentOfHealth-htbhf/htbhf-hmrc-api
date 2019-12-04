@@ -7,9 +7,9 @@ import uk.gov.dhsc.htbhf.hmrc.model.ChildDTO;
 import uk.gov.dhsc.htbhf.hmrc.model.EligibilityResponse;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static uk.gov.dhsc.htbhf.TestConstants.LISA_DATE_OF_BIRTH;
+import static uk.gov.dhsc.htbhf.TestConstants.MAGGIE_DATE_OF_BIRTH;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHousehold;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.LISA_DATE_OF_BIRTH;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.MAGGIE_DATE_OF_BIRTH;
 
 public class EligibilityResponseFactoryTest {
 
@@ -31,6 +31,6 @@ public class EligibilityResponseFactoryTest {
     private ChildDTO[] expectedChildren() {
         ChildDTO childUnderOne = ChildDTO.builder().dateOfBirth(MAGGIE_DATE_OF_BIRTH).build();
         ChildDTO childUnderFour = ChildDTO.builder().dateOfBirth(LISA_DATE_OF_BIRTH).build();
-        return new ChildDTO[]{ childUnderOne, childUnderFour};
+        return new ChildDTO[]{childUnderOne, childUnderFour};
     }
 }
