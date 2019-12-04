@@ -2,10 +2,10 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.AddressDTO;
 
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_1;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_ADDRESS_LINE_2;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_POSTCODE;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.SIMPSONS_TOWN_OR_CITY;
+import static uk.gov.dhsc.htbhf.TestConstants.SIMPSONS_ADDRESS_LINE_1;
+import static uk.gov.dhsc.htbhf.TestConstants.SIMPSONS_ADDRESS_LINE_2;
+import static uk.gov.dhsc.htbhf.TestConstants.SIMPSONS_POSTCODE;
+import static uk.gov.dhsc.htbhf.TestConstants.SIMPSONS_TOWN;
 
 public class AddressDTOTestDataFactory {
 
@@ -33,7 +33,7 @@ public class AddressDTOTestDataFactory {
         return AddressDTO.builder()
                 .addressLine1(SIMPSONS_ADDRESS_LINE_1)
                 .addressLine2(SIMPSONS_ADDRESS_LINE_2)
-                .townOrCity(SIMPSONS_TOWN_OR_CITY)
+                .townOrCity(SIMPSONS_TOWN)
                 .postcode(SIMPSONS_POSTCODE);
     }
 }

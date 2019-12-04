@@ -23,6 +23,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpStatus.OK;
+import static uk.gov.dhsc.htbhf.TestConstants.HMRC_HOUSEHOLD_IDENTIFIER;
+import static uk.gov.dhsc.htbhf.TestConstants.HOMER_NINO_V1;
 import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
@@ -33,8 +35,6 @@ import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseh
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HouseholdTestDataFactory.aHouseholdWithChildrenAged6and24months;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aPersonWithNino;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.PersonDTOTestDataFactory.aValidPersonBuilder;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOMER_NINO;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.HOUSEHOLD_INDENTIFIER;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWireMock(port = 8130)
@@ -73,8 +73,8 @@ public class HMRCIntegrationTests {
     }
 
     @ParameterizedTest(name = "Should return eligible response for claimant [{0}] Simpson stored in UC household table")
-    @CsvSource({"Homer, EB654321B",
-            "Marge, EB876543A"})
+    @CsvSource({"Homer, EE123456C",
+            "Marge, EB123456D"})
     void shouldReturnEligibleWhenMatchesHouseholdInDatabase(String parentName, String nino) {
         //Given
         householdRepository.save(aHouseholdWithChildrenAged6and24months());
@@ -85,7 +85,7 @@ public class HMRCIntegrationTests {
         ResponseEntity<EligibilityResponse> response = callService(eligibilityRequest);
 
         //Then
-        assertResponseCorrectWithHouseholdDetails(response, HOUSEHOLD_INDENTIFIER, ELIGIBLE);
+        assertResponseCorrectWithHouseholdDetails(response, HMRC_HOUSEHOLD_IDENTIFIER, ELIGIBLE);
         householdRepository.deleteAll();
     }
 
@@ -93,7 +93,7 @@ public class HMRCIntegrationTests {
     void shouldReturnNoMatchWhenMatchesNinoButNotNameInDatabase() {
         //Given
         householdRepository.save(aHousehold());
-        PersonDTO person = aValidPersonBuilder().lastName("noMatch").nino(HOMER_NINO).build();
+        PersonDTO person = aValidPersonBuilder().lastName("noMatch").nino(HOMER_NINO_V1).build();
         EligibilityRequest eligibilityRequest = anEligibilityRequestWithPerson(person);
 
         //When

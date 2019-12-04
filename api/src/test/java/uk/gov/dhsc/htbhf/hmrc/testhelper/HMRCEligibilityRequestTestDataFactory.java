@@ -2,10 +2,10 @@ package uk.gov.dhsc.htbhf.hmrc.testhelper;
 
 import uk.gov.dhsc.htbhf.hmrc.model.HMRCEligibilityRequest;
 
+import static uk.gov.dhsc.htbhf.TestConstants.ELIGIBLE_END_DATE;
+import static uk.gov.dhsc.htbhf.TestConstants.ELIGIBLE_START_DATE;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.HMRCPersonDTOTestDataFactory.aValidHMRCPerson;
 import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.CTC_ANNUAL_INCOME_THRESHOLD;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_END_DATE;
-import static uk.gov.dhsc.htbhf.hmrc.testhelper.TestConstants.ELIGIBLE_START_DATE;
 
 public class HMRCEligibilityRequestTestDataFactory {
 
