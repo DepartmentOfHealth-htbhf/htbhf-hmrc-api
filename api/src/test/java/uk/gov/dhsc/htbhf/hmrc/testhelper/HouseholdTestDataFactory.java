@@ -17,7 +17,7 @@ public class HouseholdTestDataFactory {
     public static Household aHouseholdWithChildrenAged6and24months() {
         return aHouseholdWithNoAdultsOrChildren()
                 .build()
-                .addAdult(anAdult(HOMER_FORENAME, SIMPSON_SURNAME, HOMER_NINO_V1))
+                .addAdult(anAdult(HOMER_FORENAME, SIMPSON_SURNAME, HOMER_NINO))
                 .addAdult(anAdult(MARGE_FORENAME, SIMPSON_SURNAME, MARGE_NINO))
                 .addChild(aChild(BART_FORENAME, SIMPSON_SURNAME, BART_DATE_OF_BIRTH))
                 .addChild(aChild(LISA_FORENAME, SIMPSON_SURNAME, LISA_DATE_OF_BIRTH))

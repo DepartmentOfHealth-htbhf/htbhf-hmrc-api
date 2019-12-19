@@ -24,7 +24,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpStatus.OK;
 import static uk.gov.dhsc.htbhf.TestConstants.HMRC_HOUSEHOLD_IDENTIFIER;
-import static uk.gov.dhsc.htbhf.TestConstants.HOMER_NINO_V1;
+import static uk.gov.dhsc.htbhf.TestConstants.HOMER_NINO;
 import static uk.gov.dhsc.htbhf.assertions.IntegrationTestAssertions.assertValidationErrorInResponse;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.ELIGIBLE;
 import static uk.gov.dhsc.htbhf.eligibility.model.EligibilityStatus.NO_MATCH;
@@ -73,8 +73,8 @@ public class HMRCIntegrationTests {
     }
 
     @ParameterizedTest(name = "Should return eligible response for claimant [{0}] Simpson stored in UC household table")
-    @CsvSource({"Homer, EE123456C",
-            "Marge, EB123456D"})
+    @CsvSource({"Homer, MC123456C",
+            "Marge, MC123456A"})
     void shouldReturnEligibleWhenMatchesHouseholdInDatabase(String parentName, String nino) {
         //Given
         householdRepository.save(aHouseholdWithChildrenAged6and24months());
@@ -93,7 +93,7 @@ public class HMRCIntegrationTests {
     void shouldReturnNoMatchWhenMatchesNinoButNotNameInDatabase() {
         //Given
         householdRepository.save(aHousehold());
-        PersonDTO person = aValidPersonBuilder().lastName("noMatch").nino(HOMER_NINO_V1).build();
+        PersonDTO person = aValidPersonBuilder().lastName("noMatch").nino(HOMER_NINO).build();
         EligibilityRequest eligibilityRequest = anEligibilityRequestWithPerson(person);
 
         //When
