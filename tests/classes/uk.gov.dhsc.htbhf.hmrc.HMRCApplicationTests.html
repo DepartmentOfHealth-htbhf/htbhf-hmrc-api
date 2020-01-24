@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.187s</div>
+<div class="counter">0.500s</div>
 <p>duration</p>
 </div>
 </td>
@@ -79,12 +79,12 @@
 </thead>
 <tr>
 <td class="success">contextLoads()</td>
-<td class="success">0.003s</td>
+<td class="success">0.002s</td>
 <td class="success">passed</td>
 </tr>
 <tr>
 <td class="success">swaggerDocumentationRetrieved()</td>
-<td class="success">0.184s</td>
+<td class="success">0.498s</td>
 <td class="success">passed</td>
 </tr>
 </table>
@@ -92,10 +92,10 @@
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2020-01-07 10:45:58.170  INFO 704 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [uk.gov.dhsc.htbhf.hmrc.HMRCApplicationTests], using SpringBootContextLoader
-2020-01-07 10:45:58.171  INFO 704 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [uk.gov.dhsc.htbhf.hmrc.HMRCApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2020-01-07 10:45:58.174  INFO 704 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.cloud.contract.stubrunner.provider.wiremock.StubRunnerWireMockTestExecutionListener, org.springframework.cloud.contract.wiremock.WireMockTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-2020-01-07 10:45:58.174  INFO 704 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@e1180a5, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6ec80450, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@17c12b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@fe61065, org.springframework.test.context.support.DirtiesContextTestExecutionListener@d70bd94, org.springframework.test.context.transaction.TransactionalTestExecutionListener@23b4d2ee, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@1d14512a, org.springframework.test.context.event.EventPublishingTestExecutionListener@22ce1fd5, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2ada9a05, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@2f7c0e12, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@10de97d6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@42bc12af, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3cc8a24f, org.springframework.cloud.contract.stubrunner.provider.wiremock.StubRunnerWireMockTestExecutionListener@730b375a, org.springframework.cloud.contract.wiremock.WireMockTestExecutionListener@178f6eca]
+<pre>2020-01-24 14:04:21.744  INFO 719 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [uk.gov.dhsc.htbhf.hmrc.HMRCApplicationTests], using SpringBootContextLoader
+2020-01-24 14:04:21.745  INFO 719 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [uk.gov.dhsc.htbhf.hmrc.HMRCApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2020-01-24 14:04:21.750  INFO 719 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.cloud.contract.stubrunner.provider.wiremock.StubRunnerWireMockTestExecutionListener, org.springframework.cloud.contract.wiremock.WireMockTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+2020-01-24 14:04:21.750  INFO 719 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@64435508, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@3b6d95df, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@9859818, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4cc0ad0, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7ad9e454, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2dcd45bd, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@8ad4d44, org.springframework.test.context.event.EventPublishingTestExecutionListener@6cd34c0b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@599dfe81, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1ebaa8a2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7c9f015c, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@adab9d0, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@3c8527fc, org.springframework.cloud.contract.stubrunner.provider.wiremock.StubRunnerWireMockTestExecutionListener@77b16776, org.springframework.cloud.contract.wiremock.WireMockTestExecutionListener@73200d3d]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -105,39 +105,41 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::        (v2.2.2.RELEASE)
 
-2020-01-07 10:45:58.194  INFO 704 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : Starting HMRCApplicationTests on 098e3501ed2e with PID 704 (started by circleci in /home/circleci/project/api)
-2020-01-07 10:45:58.194  INFO 704 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : No active profile set, falling back to default profiles: default
-2020-01-07 10:45:58.506  INFO 704 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2020-01-07 10:45:58.516  INFO 704 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10ms. Found 1 JPA repository interfaces.
-2020-01-07 10:45:58.583  INFO 704 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2020-01-07 10:45:58.689  WARN 704 --- [    Test worker] org.apache.tomcat.util.modeler.Registry  : The MBean registry cannot be disabled because it has already been initialised
-2020-01-07 10:45:58.691  INFO 704 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
-2020-01-07 10:45:58.692  INFO 704 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2020-01-07 10:45:58.693  INFO 704 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
-2020-01-07 10:45:58.714  INFO 704 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2020-01-07 10:45:58.714  INFO 704 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 515 ms
-2020-01-07 10:45:59.002  INFO 704 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2020-01-07 10:45:59.003  INFO 704 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2020-01-07 10:45:59.003  INFO 704 --- [    Test worker] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:h2:mem:test (H2 1.4)
-2020-01-07 10:45:59.018  INFO 704 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.007s)
-2020-01-07 10:45:59.030  INFO 704 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: 1.002
-2020-01-07 10:45:59.031  INFO 704 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Schema &quot;PUBLIC&quot; is up to date. No migration necessary.
-2020-01-07 10:45:59.065  INFO 704 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2020-01-07 10:45:59.074  INFO 704 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
-2020-01-07 10:45:59.202  INFO 704 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2020-01-07 10:45:59.202  INFO 704 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2020-01-07 10:45:59.431  WARN 704 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2020-01-07 10:45:59.512  INFO 704 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2020-01-07 10:45:59.625  INFO 704 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
-2020-01-07 10:45:59.726  INFO 704 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2020-01-07 10:45:59.901  INFO 704 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2020-01-07 10:45:59.901  INFO 704 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2020-01-07 10:45:59.906  INFO 704 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2020-01-07 10:45:59.949  INFO 704 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 40145 (http) with context path ''
-2020-01-07 10:45:59.950  INFO 704 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : Started HMRCApplicationTests in 1.774 seconds (JVM running for 17.585)
-2020-01-07 10:45:59.971  INFO 704 --- [o-auto-2-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2020-01-07 10:45:59.972  INFO 704 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2020-01-07 10:45:59.982  INFO 704 --- [o-auto-2-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-01-24 14:04:21.792  INFO 719 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : Starting HMRCApplicationTests on 4549386f3d18 with PID 719 (started by circleci in /home/circleci/project/api)
+2020-01-24 14:04:21.793  INFO 719 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : No active profile set, falling back to default profiles: default
+2020-01-24 14:04:22.646  INFO 719 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2020-01-24 14:04:22.662  INFO 719 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15ms. Found 1 JPA repository interfaces.
+2020-01-24 14:04:23.013  INFO 719 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-01-24 14:04:23.678  INFO 719 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2020-01-24 14:04:23.700  INFO 719 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-01-24 14:04:23.701  INFO 719 --- [    Test worker] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.29]
+2020-01-24 14:04:23.877  INFO 719 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-01-24 14:04:23.877  INFO 719 --- [    Test worker] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2081 ms
+2020-01-24 14:04:24.536  INFO 719 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-01-24 14:04:24.567  INFO 719 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-01-24 14:04:24.579  INFO 719 --- [    Test worker] o.f.c.internal.database.DatabaseFactory  : Database: jdbc:h2:mem:test (H2 1.4)
+2020-01-24 14:04:24.613  INFO 719 --- [    Test worker] o.f.core.internal.command.DbValidate     : Successfully validated 2 migrations (execution time 00:00.007s)
+2020-01-24 14:04:24.626  INFO 719 --- [    Test worker] o.f.c.i.s.JdbcTableSchemaHistory         : Creating Schema History table: &quot;PUBLIC&quot;.&quot;flyway_schema_history&quot;
+2020-01-24 14:04:24.637  INFO 719 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema &quot;PUBLIC&quot;: &lt;&lt; Empty Schema &gt;&gt;
+2020-01-24 14:04:24.638  INFO 719 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version 1.001 - initialscript
+2020-01-24 14:04:24.648  INFO 719 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Migrating schema &quot;PUBLIC&quot; to version 1.002 - CTC datafeed initial format
+2020-01-24 14:04:24.682  INFO 719 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Successfully applied 2 migrations to schema &quot;PUBLIC&quot; (execution time 00:00.060s)
+2020-01-24 14:04:24.745  INFO 719 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2020-01-24 14:04:24.757  INFO 719 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2020-01-24 14:04:24.832  INFO 719 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2020-01-24 14:04:24.833  INFO 719 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2020-01-24 14:04:25.345  WARN 719 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2020-01-24 14:04:25.587  INFO 719 --- [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2020-01-24 14:04:25.842  INFO 719 --- [    Test worker] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2Controller#getDocumentation(String, HttpServletRequest)]
+2020-01-24 14:04:26.140  INFO 719 --- [    Test worker] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-01-24 14:04:26.891  INFO 719 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-01-24 14:04:26.914  INFO 719 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-01-24 14:04:26.949  INFO 719 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-01-24 14:04:27.201  INFO 719 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 37329 (http) with context path ''
+2020-01-24 14:04:27.203  INFO 719 --- [    Test worker] u.g.d.htbhf.hmrc.HMRCApplicationTests    : Started HMRCApplicationTests in 5.451 seconds (JVM running for 13.748)
+2020-01-24 14:04:27.458  INFO 719 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-01-24 14:04:27.458  INFO 719 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-01-24 14:04:27.476  INFO 719 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
 </pre>
 </span>
 </div>
@@ -149,7 +151,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 5.6</a> at Jan 7, 2020, 10:47:33 AM</p>
+<a href="http://www.gradle.org">Gradle 5.6</a> at Jan 24, 2020, 2:10:36 PM</p>
 </div>
 </div>
 </body>
